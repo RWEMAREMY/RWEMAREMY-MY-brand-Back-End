@@ -79,7 +79,7 @@ const router = express_1.default.Router();
 // })
 router.post('/posts', controllers.createBlog);
 router.get('/posts', controllers.getBlog);
-router.get('/posts', controllers.getBlogbyid);
-router.patch('/posts', controllers.updateBlog);
-router.delete('/posts', controllers.deleteBlog);
+router.get('/posts/:id', controllers.getBlogById);
+router.patch('/posts/:id', controllers.updateBlog);
+router.delete('/posts/:id', controllers.deleteBlog);
 exports.default = router;

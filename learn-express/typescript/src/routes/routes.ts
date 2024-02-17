@@ -1,7 +1,7 @@
 import * as controllers from '../controller/controllers';
 import express from 'express'
 //  const Post = require("./models/post");
-import Post from "../models/post"
+import post from "../models/post"
 // express.Router(".models/post");
 const router = express.Router()
 
@@ -66,8 +66,8 @@ const router = express.Router()
 
 router.post('/posts', controllers.createBlog);
 router.get('/posts', controllers.getBlog);
-router.get('/posts', controllers.getBlogbyid);
-router.patch('/posts', controllers.updateBlog);
-router.delete('/posts', controllers.deleteBlog);
+router.get('/posts/:id', controllers.getBlogById);
+router.patch('/posts/:id', controllers.updateBlog);
+router.delete('/posts/:id', controllers.deleteBlog);
 export default router
  

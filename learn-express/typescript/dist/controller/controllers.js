@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteBlog = exports.updateBlog = exports.getBlogbyid = exports.getBlog = exports.createBlog = void 0;
+exports.deleteBlog = exports.updateBlog = exports.getBlogById = exports.getBlog = exports.createBlog = void 0;
 const post_1 = __importDefault(require("../models/post"));
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -34,19 +34,29 @@ const getBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getBlog = getBlog;
-const getBlogbyid = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getBlogById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const blog = yield post_1.default.findById(req.params.id);
         if (!blog) {
-            return res.status(400).json({ message: "Blog not found please!" });
+            return res.status(404).json({ message: 'Blog not found' });
         }
         res.json(blog);
     }
     catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(500).json({ message: err.message });
     }
 });
-exports.getBlogbyid = getBlogbyid;
+exports.getBlogById = getBlogById;
+// export const getBlogbyid = async (req: Request, res: Response) => {
+//     try {
+//         const blogId = req.params.id;
+//         const blog = await post.find({ id: blogId });
+//                  res.send(blog)
+//              } catch {
+//                  res.status(404)
+//                  res.send({ error: "Post doesn't exist!" })
+//              }
+// };
 const updateBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const blog = yield post_1.default.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -60,7 +70,7 @@ exports.updateBlog = updateBlog;
 const deleteBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield post_1.default.findByIdAndDelete(req.params.id);
-        res.json({ message: 'Blog deleted' });
+        res.json({ message: 'blog deleted' });
     }
     catch (err) {
         res.status(500).json({ message: err.message });
