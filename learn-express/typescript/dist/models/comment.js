@@ -1,6 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
+// interface IComment extends Document {
+//   author: Types.ObjectId;
+//   email:string;
+//   content: string;
+//   blog: Types.ObjectId;
+//   createdAt: Date;
+// }
 const commentSchema = new mongoose_1.Schema({
     author: String,
     email: String,

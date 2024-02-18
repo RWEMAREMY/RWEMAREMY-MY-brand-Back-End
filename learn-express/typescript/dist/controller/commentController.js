@@ -37,10 +37,11 @@ const createComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 exports.createComment = createComment;
 const getComments = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const blogId = req.params.id;
         // const commentid=req.params.id;
         const blog = yield comment_1.default.find();
         res.json(blog);
-        const comment = new comment_1.default({ content: req.body.content,
+        const comment = new comment_1.default({ blog: blogId, content: req.body.content,
             email: req.body.email, author: req.body.author });
         yield comment.save();
     }

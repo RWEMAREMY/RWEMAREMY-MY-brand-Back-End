@@ -25,26 +25,35 @@ const createQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         yield realquerry.save();
         res.json(realquerry);
     }
-    catch (error) {
+    catch (err) {
     }
 });
 exports.createQuerry = createQuerry;
 const getallQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // const commentid=req.params.id;
-        const allquerry = yield Querries_1.default.find();
-        if (!allquerry) {
-            return res.json({ message: "Querry not Found" });
-        }
-        res.json(allquerry);
-        const thequerry = new Querries_1.default({ content: req.body.content, email: req.body.email, author: req.body.author });
-        yield thequerry.save();
+        const blog = yield Querries_1.default.find();
+        res.send(blog);
     }
     catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(400).json({ message: err.message });
     }
 });
 exports.getallQuerry = getallQuerry;
+// export const getallQuerry = async (req: Request, res: Response) => {
+//     try {
+//       // const commentid=req.params.id;
+//         const allquerry = await Querry.find();
+//         if(!allquerry){
+//             return res.json({message:"Querry not Found"});
+//         }
+//         res.send(allquerry);
+//         const thisquerry = new Querry({content:req.body.content,
+//             email:req.body.email,author:req.body.author  });
+//             await thisquerry.save();
+//     } catch (err) {
+//         res.status(500).json({ message: (err as Error).message });
+//     }
+//   };
 const getSingleQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const thisquerries = yield Querries_1.default.findById(req.params.id);

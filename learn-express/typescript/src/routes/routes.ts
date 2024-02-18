@@ -82,7 +82,7 @@ router.route('/posts/:id/comments/:id').patch(Commentupdate);
 /////////////////Querries section///////////////
 
 router.post('/posts/Query', query.createQuerry);
-router.get('/posts/Query',query.getallQuerry);
+router.get('/Query',query.getallQuerry);
 router.get('/posts/Query/:id', query.getSingleQuerry);
 
 export default router

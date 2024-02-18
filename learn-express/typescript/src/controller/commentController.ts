@@ -29,13 +29,14 @@ export const createComment = async (req: Request, res: Response) => {
 };
 export const getComments = async (req: Request, res: Response) => {
   try {
+    const  blogId  = req.params.id;
     // const commentid=req.params.id;
       const blog = await Comment.find();
      
       res.json(blog);
 
-  const comment = new Comment({ content:req.body.content,
-    email:req.body.email,author:req.body.author });
+  const comment = new Comment({blog:blogId, content:req.body.content,
+    email:req.body.email,author:req.body.author  });
 
   await comment.save();
 
