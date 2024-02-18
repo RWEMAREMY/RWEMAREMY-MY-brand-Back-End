@@ -31,8 +31,8 @@ const createQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* (
 exports.createQuerry = createQuerry;
 const getallQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const blog = yield Querries_1.default.find();
-        res.send(blog);
+        const theques = yield Querries_1.default.find();
+        res.send(theques);
     }
     catch (err) {
         res.status(400).json({ message: err.message });

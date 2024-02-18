@@ -5,5 +5,5 @@ const likesSchema=new Schema({
     content:String,
  
 })
-const Likes=model('querry',likesSchema);
+const Likes=model('likes',likesSchema);
 export default Likes;

@@ -2,8 +2,10 @@ import * as controllers from '../controller/controllers';
 import express from 'express';
 import { createComment, getComments,getBlogComment,deleteComment,Commentupdate } from '../controller/commentController';
 import *as query from '../controller/Querries';
+import {createlike,alllikes,getSinglelikes} from '../controller/likes'
 //  const Post = require("./models/post");
-import post from "../models/post"
+// import post from "../models/post"
+// import Querry from '../models/Querries';
 // express.Router(".models/post");
 const router = express.Router()
 
@@ -84,5 +86,10 @@ router.route('/posts/:id/comments/:id').patch(Commentupdate);
 router.post('/posts/Query', query.createQuerry);
 router.get('/Query',query.getallQuerry);
 router.get('/posts/Query/:id', query.getSingleQuerry);
+
+////////////////likes/////////////////////////
+router.route('/posts/:id/likes').post(createlike);
+router.route('/posts/:id/likes').get(alllikes);
+router.route('/posts/:id/likes/:id').get(getSinglelikes);
 
 export default router

@@ -30,6 +30,10 @@ const controllers = __importStar(require("../controller/controllers"));
 const express_1 = __importDefault(require("express"));
 const commentController_1 = require("../controller/commentController");
 const query = __importStar(require("../controller/Querries"));
+const likes_1 = require("../controller/likes");
+//  const Post = require("./models/post");
+// import post from "../models/post"
+// import Querry from '../models/Querries';
 // express.Router(".models/post");
 const router = express_1.default.Router();
 // router.get("/posts", async (req, res) => {
@@ -94,4 +98,8 @@ router.route('/posts/:id/comments/:id').patch(commentController_1.Commentupdate)
 router.post('/posts/Query', query.createQuerry);
 router.get('/Query', query.getallQuerry);
 router.get('/posts/Query/:id', query.getSingleQuerry);
+////////////////likes/////////////////////////
+router.route('/posts/:id/likes').post(likes_1.createlike);
+router.route('/posts/:id/likes').get(likes_1.alllikes);
+router.route('/posts/:id/likes/:id').get(likes_1.getSinglelikes);
 exports.default = router;
