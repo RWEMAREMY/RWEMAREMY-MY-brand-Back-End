@@ -28,6 +28,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const controllers = __importStar(require("../controller/controllers"));
 const express_1 = __importDefault(require("express"));
+const commentController_1 = require("../controller/commentController");
 // express.Router(".models/post");
 const router = express_1.default.Router();
 // router.get("/posts", async (req, res) => {
@@ -82,4 +83,11 @@ router.get('/posts', controllers.getBlog);
 router.get('/posts/:id', controllers.getBlogById);
 router.patch('/posts/:id', controllers.updateBlog);
 router.delete('/posts/:id', controllers.deleteBlog);
+//////Comment Section//////////////////////
+router.route('/posts/:id/comments').post(commentController_1.createComment);
+router.route('/posts/:id/comments').get(commentController_1.getComments);
+router.route('/posts/:id/comments/:id').get(commentController_1.getBlogComment);
+router.route('/posts/:id/comments/:id').delete(commentController_1.deleteComment);
+router.route('/posts/:id/comments/:id').patch(commentController_1.Commentupdate);
+/////////////////Querries section///////////////
 exports.default = router;

@@ -1,17 +1,20 @@
 import { Schema, model, Document, Types } from 'mongoose';
 
 interface IComment extends Document {
-  content: string;
+  
   author: Types.ObjectId;
+  email:string;
+  content: string;
   blog: Types.ObjectId;
   createdAt: Date;
 }
 
 const commentSchema = new Schema<IComment>({
-  content: { type: String, required: true },
-  author: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  blog: { type: Schema.Types.ObjectId, ref: 'Blog', required: true },
-  createdAt: { type: Date, default: Date.now }
+  author:String,
+  email:String,
+  content:String,
+  blog:String,
+  createdAt:String,
 });
 
 const Comment = model<IComment>('Comment', commentSchema);

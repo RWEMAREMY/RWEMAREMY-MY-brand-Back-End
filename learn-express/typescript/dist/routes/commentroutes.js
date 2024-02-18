@@ -7,7 +7,8 @@ const express_1 = __importDefault(require("express"));
 const commentController_1 = require("../controller/commentController");
 const router = express_1.default.Router();
 // POST /api/blogs/:blogId/comments
-router.post('/', commentController_1.createComment);
+router.route('/posts/:id/comments').post(commentController_1.createComment);
 // GET /api/blogs/:blogId/comments
-router.get('/', commentController_1.getCommentsByBlogId);
+router.route('/posts/comments/:id').get(commentController_1.getComments);
+router.route('/posts/:id/comments:id').get(commentController_1.getBlogComment);
 exports.default = router;

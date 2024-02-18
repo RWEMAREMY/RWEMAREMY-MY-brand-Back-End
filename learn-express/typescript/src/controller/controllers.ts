@@ -30,7 +30,6 @@ export const getBlogById = async (req: Request, res: Response) => {
     }
 };
 
-
 // export const getBlogbyid = async (req: Request, res: Response) => {
 //     try {
 

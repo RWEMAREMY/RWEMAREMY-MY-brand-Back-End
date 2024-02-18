@@ -1,5 +1,6 @@
 import * as controllers from '../controller/controllers';
-import express from 'express'
+import express from 'express';
+import { createComment, getComments,getBlogComment,deleteComment,Commentupdate } from '../controller/commentController';
 //  const Post = require("./models/post");
 import post from "../models/post"
 // express.Router(".models/post");
@@ -69,5 +70,15 @@ router.get('/posts', controllers.getBlog);
 router.get('/posts/:id', controllers.getBlogById);
 router.patch('/posts/:id', controllers.updateBlog);
 router.delete('/posts/:id', controllers.deleteBlog);
+
+     //////Comment Section//////////////////////
+router.route('/posts/:id/comments').post(createComment);
+router.route('/posts/:id/comments').get(getComments);
+router.route('/posts/:id/comments/:id').get(getBlogComment);
+router.route('/posts/:id/comments/:id').delete(deleteComment);
+router.route('/posts/:id/comments/:id').patch(Commentupdate);
+
+/////////////////Querries section///////////////
+
+
 export default router
- 
