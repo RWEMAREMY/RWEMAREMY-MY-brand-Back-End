@@ -1,6 +1,7 @@
 // src/controllers/commentController.ts
 import { Request, Response } from 'express';
 import Comment from '../models/comment';
+import { Error} from 'mongoose';
 // import jwt from 'jsonwebtoken';
 // import { Error } from 'mongoose';
 
@@ -38,7 +39,7 @@ export const getComments = async (req: Request, res: Response) => {
 
   await comment.save();
 
-  } catch (err: any) {
+  } catch (err) {
       res.status(500).json({ message: (err as Error).message });
   }
 };

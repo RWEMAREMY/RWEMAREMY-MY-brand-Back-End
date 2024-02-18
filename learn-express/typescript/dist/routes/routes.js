@@ -29,6 +29,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const controllers = __importStar(require("../controller/controllers"));
 const express_1 = __importDefault(require("express"));
 const commentController_1 = require("../controller/commentController");
+const query = __importStar(require("../controller/Querries"));
 // express.Router(".models/post");
 const router = express_1.default.Router();
 // router.get("/posts", async (req, res) => {
@@ -90,4 +91,7 @@ router.route('/posts/:id/comments/:id').get(commentController_1.getBlogComment);
 router.route('/posts/:id/comments/:id').delete(commentController_1.deleteComment);
 router.route('/posts/:id/comments/:id').patch(commentController_1.Commentupdate);
 /////////////////Querries section///////////////
+router.post('/posts/Query', query.createQuerry);
+router.get('/posts/Query', query.getallQuerry);
+router.get('/posts/Query/:id', query.getSingleQuerry);
 exports.default = router;

@@ -1,17 +1,60 @@
 "use strict";
-// import { Request ,Response }  from 'express';
-// import Querry from '../models/Querries';
-// export const createQuerry =async(req:Request,res:Response)=>{
-//     try{
-//         const thisquerries=await req.body;
-//         if(!thisquerries){
-//             return res.status(400).json({message:"required"});
-//         }
-//         const realquerry = new Querry({author:req.body.author,content:req.body.content,
-//             email:req.body.email,createdAt: req.body.createdAt})
-//            await realquerry.save()
-//            res.json(realquerry)
-//     }
-//     catch(error){
-//     }
-// };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getSingleQuerry = exports.getallQuerry = exports.createQuerry = void 0;
+const Querries_1 = __importDefault(require("../models/Querries"));
+const createQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const thisquerries = yield req.body;
+        if (!thisquerries) {
+            return res.status(400).json({ message: "required" });
+        }
+        const realquerry = new Querries_1.default({ author: req.body.author, content: req.body.content,
+            email: req.body.email, createdAt: req.body.createdAt });
+        yield realquerry.save();
+        res.json(realquerry);
+    }
+    catch (error) {
+    }
+});
+exports.createQuerry = createQuerry;
+const getallQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        // const commentid=req.params.id;
+        const allquerry = yield Querries_1.default.find();
+        if (!allquerry) {
+            return res.json({ message: "Querry not Found" });
+        }
+        res.json(allquerry);
+        const thequerry = new Querries_1.default({ content: req.body.content, email: req.body.email, author: req.body.author });
+        yield thequerry.save();
+    }
+    catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+exports.getallQuerry = getallQuerry;
+const getSingleQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const thisquerries = yield Querries_1.default.findById(req.params.id);
+        if (!thisquerries) {
+            return res.json({ message: "Querry not Found" });
+        }
+        res.json(thisquerries);
+    }
+    catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+exports.getSingleQuerry = getSingleQuerry;
