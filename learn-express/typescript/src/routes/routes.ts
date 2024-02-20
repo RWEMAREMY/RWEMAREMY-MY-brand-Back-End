@@ -10,15 +10,15 @@ import {createlike,alllikes,getSinglelikes} from '../controller/likes'
 const router = express.Router()
 
 
-// router.get("/posts", async (req, res) => {
-//    const posts = await Post.find()
-//     res.send(posts)
+// router.get("/blogs", async (req, res) => {
+//    const blogs = await Post.find()
+//     res.send(blogs)
 
 //    })
     
    
    
-//  router.post("/posts", async (req, res) => {
+//  router.post("/blogs", async (req, res) => {
 //     const post =
 //    new Post({
 //     title: req.body.title,
@@ -28,7 +28,7 @@ const router = express.Router()
 //     res.send(post)
 //     })
 
-//     router.get("/posts/:id", async (req, res) => {
+//     router.get("/blogs/:id", async (req, res) => {
 //       try {
 //          const post = await Post.findOne({ _id: req.params.id })
 //          res.send(post)
@@ -38,7 +38,7 @@ const router = express.Router()
 //      }
 //   })
 
-//   router.patch("/posts/:id", async (req, res) => {
+//   router.patch("/blogs/:id", async (req, res) => {
 //    try {
 //        const post = await Post.findOne({ _id: req.params.id })
 
@@ -58,7 +58,7 @@ const router = express.Router()
 //    }
 // })
 
-// router.delete("/posts/:id", async (req, res) => {
+// router.delete("/blogs/:id", async (req, res) => {
 //    try {
 //        await Post.deleteOne({ _id: req.params.id })
 //        res.status(204).send()
@@ -68,28 +68,28 @@ const router = express.Router()
 //    }
 // })
 
-router.post('/posts', controllers.createBlog);
-router.get('/posts', controllers.getBlog);
-router.get('/posts/:id', controllers.getBlogById);
-router.patch('/posts/:id', controllers.updateBlog);
-router.delete('/posts/:id', controllers.deleteBlog);
+router.post('/blogs', controllers.createBlog);
+router.get('/blogs', controllers.getBlog);
+router.get('/blogs/:id', controllers.getBlogById);
+router.patch('/blogs/:id', controllers.updateBlog);
+router.delete('/blogs/:id', controllers.deleteBlog);
 
      //////Comment Section//////////////////////
-router.route('/posts/:id/comments').post(createComment);
-router.route('/posts/:id/comments').get(getComments);
-router.route('/posts/:id/comments/:id').get(getBlogComment);
-router.route('/posts/:id/comments/:id').delete(deleteComment);
-router.route('/posts/:id/comments/:id').patch(Commentupdate);
+router.route('/blogs/:id/comments').post(createComment);
+router.route('/blogs/:id/comments').get(getComments);
+router.route('/blogs/:id/comments/:id').get(getBlogComment);
+router.route('/blogs/:id/comments/:id').delete(deleteComment);
+router.route('/blogs/:id/comments/:id').patch(Commentupdate);
 
 /////////////////Querries section///////////////
 
-router.post('/posts/Query', query.createQuerry);
-router.get('/Query',query.getallQuerry);
-router.get('/posts/Query/:id', query.getSingleQuerry);
+router.post('/query', query.createQuerry);
+router.get('/query',query.getallQuerry);
+router.get('/query/:id', query.getSingleQuerry);
 
 ////////////////likes/////////////////////////
-router.route('/posts/:id/likes').post(createlike);
-router.route('/posts/:id/likes').get(alllikes);
-router.route('/posts/:id/likes/:id').get(getSinglelikes);
+router.route('/blogs/:id/likes').post(createlike);
+router.route('/blogs/:id/likes').get(alllikes);
+router.route('/blogs/:id/likes/:id').get(getSinglelikes);
 
 export default router

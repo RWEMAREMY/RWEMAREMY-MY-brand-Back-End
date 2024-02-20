@@ -10,19 +10,18 @@ export const createlike = async (req: Request, res: Response) => {
   try {
     const contents  = await req.body.content;
     const names  = await req.body.name;
-    const  blogId  = req.params.id;
+    const {name,content}=req.body;
+    // const  blogId  = req.params.id;
    
     // You may want to perform additional validation on the content
-    const { error } = likeval.validate({ names , contents });
-    if(error){
-      throw new Error(error.details[0].message);
+    const { error } = likeval.validate({ name , content });
+    if (error) {
+      return res.status(400).json({ error: error.details[0].message });
     }
-
-    
-    const comment = new Likes({name:names,content:contents});
-
+    const blog = await Likes.create({ name , content });
+    res.status(201).json(blog);
+    const comment = new Likes({ name , content });
     await comment.save();
-
     res.status(201).json(comment);
   } catch (error) {
     console.error(error);

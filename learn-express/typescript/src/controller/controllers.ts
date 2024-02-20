@@ -1,6 +1,7 @@
 import {Request,Response}  from "express";
 import post from '../models/post';
-import{Error} from 'mongoose'
+import{Error} from 'mongoose';
+import {postval} from '../validations/postvalidation';
 export const createBlog = async (req: Request, res: Response) => {
     try {
         const blog = await post.create(req.body);

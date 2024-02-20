@@ -95,9 +95,9 @@ router.route('/posts/:id/comments/:id').get(commentController_1.getBlogComment);
 router.route('/posts/:id/comments/:id').delete(commentController_1.deleteComment);
 router.route('/posts/:id/comments/:id').patch(commentController_1.Commentupdate);
 /////////////////Querries section///////////////
-router.post('/posts/Query', query.createQuerry);
-router.get('/Query', query.getallQuerry);
-router.get('/posts/Query/:id', query.getSingleQuerry);
+router.post('/query', query.createQuerry);
+router.get('/query', query.getallQuerry);
+router.get('/query/:id', query.getSingleQuerry);
 ////////////////likes/////////////////////////
 router.route('/posts/:id/likes').post(likes_1.createlike);
 router.route('/posts/:id/likes').get(likes_1.alllikes);

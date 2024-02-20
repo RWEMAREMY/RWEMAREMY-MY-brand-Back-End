@@ -26,6 +26,7 @@ const createQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         res.json(realquerry);
     }
     catch (err) {
+        res.status(400).json({ message: err.message });
     }
 });
 exports.createQuerry = createQuerry;

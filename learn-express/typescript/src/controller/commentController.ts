@@ -2,6 +2,7 @@
 import { Request, Response } from 'express';
 import Comment from '../models/comment';
 import { Error} from 'mongoose';
+import {commentval} from '../validations/commentsvalidation';
 // import jwt from 'jsonwebtoken';
 // import { Error } from 'mongoose';
 

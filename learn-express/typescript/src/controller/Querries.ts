@@ -1,6 +1,7 @@
 import { Request ,Response }  from 'express';
 import Querry from '../models/Querries';
-import {Error} from 'mongoose'
+import {Error} from 'mongoose';
+import {Queryval} from '../validations/Querriesvalidation';
 
 export const createQuerry =async(req:Request,res:Response)=>{
     try{
@@ -14,7 +15,7 @@ export const createQuerry =async(req:Request,res:Response)=>{
            res.json(realquerry)
     }
     catch(err){
-
+        res.status(400).json({ message: (err as Error).message });
     }
 };
 
