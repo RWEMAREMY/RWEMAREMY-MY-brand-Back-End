@@ -15,6 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const routes_js_1 = __importDefault(require("./routes/routes.js"));
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
+const port = parseInt(process.env.PORT, 10);
 // mongoose
 //   .connect("mongodb://localhost:27017/acmedb", { useNewUrlParser: true })
 //   .then(() => {
@@ -39,6 +42,6 @@ const connectToDB = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 connectToDB();
-app.listen(4000, () => {
+app.listen(port, () => {
     console.log("Server has started!");
 });

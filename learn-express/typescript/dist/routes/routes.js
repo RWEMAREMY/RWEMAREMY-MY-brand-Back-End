@@ -30,17 +30,17 @@ const controllers = __importStar(require("../controller/controllers"));
 const express_1 = __importDefault(require("express"));
 const commentController_1 = require("../controller/commentController");
 const query = __importStar(require("../controller/Querries"));
-const likes_1 = require("../controller/likes");
+const multer_1 = __importDefault(require("../accesories/multer"));
 //  const Post = require("./models/post");
 // import post from "../models/post"
 // import Querry from '../models/Querries';
 // express.Router(".models/post");
 const router = express_1.default.Router();
-// router.get("/posts", async (req, res) => {
-//    const posts = await Post.find()
-//     res.send(posts)
+// router.get("/blogs", async (req, res) => {
+//    const blogs = await Post.find()
+//     res.send(blogs)
 //    })
-//  router.post("/posts", async (req, res) => {
+//  router.post("/blogs", async (req, res) => {
 //     const post =
 //    new Post({
 //     title: req.body.title,
@@ -49,7 +49,7 @@ const router = express_1.default.Router();
 //     await post.save()
 //     res.send(post)
 //     })
-//     router.get("/posts/:id", async (req, res) => {
+//     router.get("/blogs/:id", async (req, res) => {
 //       try {
 //          const post = await Post.findOne({ _id: req.params.id })
 //          res.send(post)
@@ -58,7 +58,7 @@ const router = express_1.default.Router();
 //          res.send({ error: "Post doesn't exist!" })
 //      }
 //   })
-//   router.patch("/posts/:id", async (req, res) => {
+//   router.patch("/blogs/:id", async (req, res) => {
 //    try {
 //        const post = await Post.findOne({ _id: req.params.id })
 //        if (req.body.title) {
@@ -74,7 +74,7 @@ const router = express_1.default.Router();
 //        res.send({ error: "Post doesn't exist!" })
 //    }
 // })
-// router.delete("/posts/:id", async (req, res) => {
+// router.delete("/blogs/:id", async (req, res) => {
 //    try {
 //        await Post.deleteOne({ _id: req.params.id })
 //        res.status(204).send()
@@ -83,23 +83,24 @@ const router = express_1.default.Router();
 //        res.send({ error: "Post doesn't exist!" })
 //    }
 // })
-router.post('/posts', controllers.createBlog);
-router.get('/posts', controllers.getBlog);
-router.get('/posts/:id', controllers.getBlogById);
-router.patch('/posts/:id', controllers.updateBlog);
-router.delete('/posts/:id', controllers.deleteBlog);
+router.post('/blogs', multer_1.default.single("image"), controllers.createBlog);
+router.get('/blogs', controllers.getBlog);
+router.get('/blogs/:id', controllers.getBlogById);
+router.patch('/blogs/:id', controllers.updateBlog);
+router.delete('/blogs/:id', controllers.deleteBlog);
 //////Comment Section//////////////////////
-router.route('/posts/:id/comments').post(commentController_1.createComment);
-router.route('/posts/:id/comments').get(commentController_1.getComments);
-router.route('/posts/:id/comments/:id').get(commentController_1.getBlogComment);
-router.route('/posts/:id/comments/:id').delete(commentController_1.deleteComment);
-router.route('/posts/:id/comments/:id').patch(commentController_1.Commentupdate);
+router.route('/blogs/:id/comments').post(commentController_1.createComment);
+router.route('/blogs/:id/comments').get(commentController_1.getComments);
+router.route('/blogs/:id/comments/:id').get(commentController_1.getBlogComment);
+router.route('/blogs/:id/comments/:id').delete(commentController_1.deleteComment);
+router.route('/blogs/:id/comments/:id').patch(commentController_1.Commentupdate);
 /////////////////Querries section///////////////
 router.post('/query', query.createQuerry);
 router.get('/query', query.getallQuerry);
 router.get('/query/:id', query.getSingleQuerry);
 ////////////////likes/////////////////////////
-router.route('/posts/:id/likes').post(likes_1.createlike);
-router.route('/posts/:id/likes').get(likes_1.alllikes);
-router.route('/posts/:id/likes/:id').get(likes_1.getSinglelikes);
+// router.route('/blogs/:id/likes').post(createlike);
+// router.route('/blogs/:id/likes').get(alllikes);
+// router.route('/blogs/:id/likes/:id').get(getSinglelikes);
+router.post('/blogs/:id/like', controllers.likeBlog);
 exports.default = router;

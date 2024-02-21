@@ -14,10 +14,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Commentupdate = exports.deleteComment = exports.getBlogComment = exports.getComments = exports.createComment = void 0;
 const comment_1 = __importDefault(require("../models/comment"));
+const commentsvalidation_1 = require("../validations/commentsvalidation");
 // import jwt from 'jsonwebtoken';
 // import { Error } from 'mongoose';
 const createComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const { name, email, content, blog } = req.body;
+        const { error } = commentsvalidation_1.commentval.validate({ name, email, content, blog });
+        if (error) {
+            return res.status(400).json({ error: error.details[0].message });
+        }
         const contents = yield req.body.content;
         const blogId = req.params.id;
         // You may want to perform additional validation on the content
@@ -25,7 +31,7 @@ const createComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             return res.status(400).json({ message: 'Content is required' });
         }
         const comment = new comment_1.default({ content: contents, email: req.body.email,
-            author: req.body.author, blog: blogId });
+            name: req.body.name, date: req.body.date, blog: blogId });
         yield comment.save();
         res.status(201).json(comment);
     }
@@ -42,7 +48,7 @@ const getComments = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const blog = yield comment_1.default.find();
         res.json(blog);
         const comment = new comment_1.default({ blog: blogId, content: req.body.content,
-            email: req.body.email, author: req.body.author });
+            email: req.body.email, name: req.body.name, date: req.body.date });
         yield comment.save();
     }
     catch (err) {
@@ -75,8 +81,13 @@ const deleteComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 exports.deleteComment = deleteComment;
 const Commentupdate = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const blog = yield comment_1.default.findByIdAndUpdate(req.params.id, req.body, { new: true });
-        res.json(blog);
+        const { name, email, content, blog } = req.body;
+        const { error } = commentsvalidation_1.commentval.validate({ name, email, content, blog });
+        if (error) {
+            return res.status(400).json({ error: error.details[0].message });
+        }
+        const theblog = yield comment_1.default.findByIdAndUpdate(req.params.id, { name, email, content, blog }, { new: true });
+        res.json(theblog);
     }
     catch (err) {
         res.status(400).json({ message: err.message });
@@ -89,7 +100,7 @@ exports.Commentupdate = Commentupdate;
 //         const blog = await Comment.find();
 //         res.json(blog);
 //     const comment = new Comment({ content:req.body.content,
-//       email:req.body.email,author:req.body.author });
+//       email:req.body.email,name:req.body.name });
 //     await comment.save();
 //     } catch (err: any) {
 //         res.status(500).json({ message: (err as Error).message });

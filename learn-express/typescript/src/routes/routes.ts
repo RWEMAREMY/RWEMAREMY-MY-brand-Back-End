@@ -2,7 +2,7 @@ import * as controllers from '../controller/controllers';
 import express from 'express';
 import { createComment, getComments,getBlogComment,deleteComment,Commentupdate } from '../controller/commentController';
 import *as query from '../controller/Querries';
-import {createlike,alllikes,getSinglelikes} from '../controller/likes'
+import save from '../accesories/multer';
 //  const Post = require("./models/post");
 // import post from "../models/post"
 // import Querry from '../models/Querries';
@@ -68,7 +68,7 @@ const router = express.Router()
 //    }
 // })
 
-router.post('/blogs', controllers.createBlog);
+router.post('/blogs', save.single("image"),controllers.createBlog);
 router.get('/blogs', controllers.getBlog);
 router.get('/blogs/:id', controllers.getBlogById);
 router.patch('/blogs/:id', controllers.updateBlog);
@@ -88,8 +88,9 @@ router.get('/query',query.getallQuerry);
 router.get('/query/:id', query.getSingleQuerry);
 
 ////////////////likes/////////////////////////
-router.route('/blogs/:id/likes').post(createlike);
-router.route('/blogs/:id/likes').get(alllikes);
-router.route('/blogs/:id/likes/:id').get(getSinglelikes);
+// router.route('/blogs/:id/likes').post(createlike);
+// router.route('/blogs/:id/likes').get(alllikes);
+// router.route('/blogs/:id/likes/:id').get(getSinglelikes);
+router.post('/blogs/:id/like', controllers.likeBlog);
 
 export default router

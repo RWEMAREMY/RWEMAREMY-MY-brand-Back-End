@@ -8,6 +8,11 @@ import {commentval} from '../validations/commentsvalidation';
 
 export const createComment = async (req: Request, res: Response) => {
   try {
+    const {name,email,content,blog}=req.body;
+    const { error } = commentval.validate({ name,email,content,blog});
+    if (error) {
+      return res.status(400).json({ error: error.details[0].message });
+    }
     const contents  = await req.body.content;
     const  blogId  = req.params.id;
    
@@ -18,7 +23,7 @@ export const createComment = async (req: Request, res: Response) => {
 
     
     const comment = new Comment({ content:contents,email:req.body.email,
-      author:req.body.author, blog: blogId });
+      name:req.body.name,date:req.body.date, blog: blogId });
 
     await comment.save();
 
@@ -37,7 +42,7 @@ export const getComments = async (req: Request, res: Response) => {
       res.json(blog);
 
   const comment = new Comment({blog:blogId, content:req.body.content,
-    email:req.body.email,author:req.body.author  });
+    email:req.body.email,name:req.body.name ,date:req.body.date });
 
   await comment.save();
 
@@ -68,8 +73,13 @@ catch(err:any){
 };
 export const Commentupdate = async (req: Request, res: Response) => {
   try {
-      const blog = await Comment.findByIdAndUpdate(req.params.id, req.body, { new: true });
-      res.json(blog);
+    const {name,email,content,blog}=req.body;
+    const { error } = commentval.validate({ name,email,content,blog });
+    if (error) {
+      return res.status(400).json({ error: error.details[0].message });
+    }
+      const theblog = await Comment.findByIdAndUpdate(req.params.id, { name,email,content,blog }, { new: true });
+      res.json(theblog);
   } catch (err: any) {
       res.status(400).json({ message: err.message });
   }
@@ -83,7 +93,7 @@ export const Commentupdate = async (req: Request, res: Response) => {
 //         res.json(blog);
 
 //     const comment = new Comment({ content:req.body.content,
-//       email:req.body.email,author:req.body.author });
+//       email:req.body.email,name:req.body.name });
 
 //     await comment.save();
 

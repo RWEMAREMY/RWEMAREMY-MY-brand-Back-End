@@ -1,10 +1,26 @@
 import {Request,Response}  from "express";
+import cloudinary from "../accesories/cloudinary";
 import post from '../models/post';
 import{Error} from 'mongoose';
 import {postval} from '../validations/postvalidation';
 export const createBlog = async (req: Request, res: Response) => {
+   
     try {
-        const blog = await post.create(req.body);
+
+        const {title,content}=req.body;
+        console.log(req.body)
+
+        const { error } = postval.validate({ title,content });
+        if (error) {
+          return res.status(400).json({ error: error.details[0].message});
+        }
+if(!req.file){
+    return
+}
+        //const result = await cloudinary.uploader.upload(req?.file);
+        const blog = await post.create({title,
+            content,//image: result.secure_url
+            });
         res.status(201).json(blog);
     } catch (err:any) {
         res.status(400).json({ message: err.message });
@@ -44,7 +60,12 @@ export const getBlogById = async (req: Request, res: Response) => {
 // };
 export const updateBlog = async (req: Request, res: Response) => {
     try {
-        const blog = await post.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const {title,content}=req.body;
+        const { error } = postval.validate({ title,content });
+        if (error) {
+          return res.status(400).json({ error: error.details[0].message });
+        }
+        const blog = await post.findByIdAndUpdate(req.params.id, { title,content }, { new: true });
         res.json(blog);
     } catch (err: any) {
         res.status(400).json({ message: err.message });
@@ -59,3 +80,20 @@ export const deleteBlog = async (req: Request, res: Response) => {
         res.status(500).json({ message: (err as Error).message });
     }
 };
+
+export const likeBlog = async(req: Request, res: Response)=> {
+    try {
+      const { id } = req.params;
+      const blog = await post.findById(id);
+      if (!blog) {
+        return res.status(404).json({ message: 'Blog not found' });
+      }
+      blog.likes++; // here i Incremented likes..
+      await blog.save();
+      res.status(200).json({ likes: blog.likes });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  };
+

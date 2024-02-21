@@ -15,24 +15,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getSinglelikes = exports.alllikes = exports.createlike = void 0;
 const likes_1 = __importDefault(require("../models/likes"));
 const likesvalidation_1 = require("../validations/likesvalidation");
-// import jwt from 'jsonwebtoken';
-// import { Error } from 'mongoose';
 const createlike = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const contents = yield req.body.content;
-        const names = yield req.body.name;
-        const { name, content } = req.body;
-        // const  blogId  = req.params.id;
-        // You may want to perform additional validation on the content
-        const { error } = likesvalidation_1.likeval.validate({ name, content });
+        const { like } = req.body;
+        const { error } = likesvalidation_1.likeval.validate({ like });
         if (error) {
             return res.status(400).json({ error: error.details[0].message });
         }
-        const blog = yield likes_1.default.create({ name, content });
+        const blog = yield likes_1.default.create({ like });
         res.status(201).json(blog);
-        const comment = new likes_1.default({ name, content });
-        yield comment.save();
-        res.status(201).json(comment);
     }
     catch (error) {
         console.error(error);
@@ -42,11 +33,9 @@ const createlike = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.createlike = createlike;
 const alllikes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const blogId = req.params.id;
-        // const commentid=req.params.id;
         const blog = yield likes_1.default.find();
         res.json(blog);
-        const comment = new likes_1.default({ name: req.body.name, content: req.body.content });
+        const comment = new likes_1.default({ like: req.body.like });
         yield comment.save();
     }
     catch (err) {
@@ -67,15 +56,3 @@ const getSinglelikes = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.getSinglelikes = getSinglelikes;
-// export const getComments = async (req: Request, res: Response) => {
-//     try {
-//       // const commentid=req.params.id;
-//         const blog = await Comment.find();
-//         res.json(blog);
-//     const comment = new Comment({ content:req.body.content,
-//       email:req.body.email,name:names });
-//     await comment.save();
-//     } catch (err: any) {
-//         res.status(500).json({ message: (err as Error).message });
-//     }
-// };

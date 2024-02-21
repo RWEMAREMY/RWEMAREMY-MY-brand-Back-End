@@ -12,11 +12,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteBlog = exports.updateBlog = exports.getBlogById = exports.getBlog = exports.createBlog = void 0;
+exports.likeBlog = exports.deleteBlog = exports.updateBlog = exports.getBlogById = exports.getBlog = exports.createBlog = void 0;
 const post_1 = __importDefault(require("../models/post"));
+const postvalidation_1 = require("../validations/postvalidation");
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const blog = yield post_1.default.create(req.body);
+        const { title, content } = req.body;
+        console.log(req.body);
+        const { error } = postvalidation_1.postval.validate({ title, content });
+        if (error) {
+            return res.status(400).json({ error: error.details[0].message });
+        }
+        if (!req.file) {
+            return;
+        }
+        //const result = await cloudinary.uploader.upload(req?.file);
+        const blog = yield post_1.default.create({ title,
+            content, //image: result.secure_url
+        });
         res.status(201).json(blog);
     }
     catch (err) {
@@ -59,7 +72,12 @@ exports.getBlogById = getBlogById;
 // };
 const updateBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const blog = yield post_1.default.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const { title, content } = req.body;
+        const { error } = postvalidation_1.postval.validate({ title, content });
+        if (error) {
+            return res.status(400).json({ error: error.details[0].message });
+        }
+        const blog = yield post_1.default.findByIdAndUpdate(req.params.id, { title, content }, { new: true });
         res.json(blog);
     }
     catch (err) {
@@ -77,3 +95,20 @@ const deleteBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.deleteBlog = deleteBlog;
+const likeBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const blog = yield post_1.default.findById(id);
+        if (!blog) {
+            return res.status(404).json({ message: 'Blog not found' });
+        }
+        blog.likes++; // here i Incremented likes..
+        yield blog.save();
+        res.status(200).json({ likes: blog.likes });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+exports.likeBlog = likeBlog;

@@ -11,7 +11,7 @@ const querryschema = new mongoose_1.Schema({
     author: String,
     email: String,
     content: String,
-    createdAt: String,
+    date: { type: Date, default: Date.now }
 });
 const Querry = (0, mongoose_1.model)('querry', querryschema);
 exports.default = Querry;

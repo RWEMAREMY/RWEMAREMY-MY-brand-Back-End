@@ -14,14 +14,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getSingleQuerry = exports.getallQuerry = exports.createQuerry = void 0;
 const Querries_1 = __importDefault(require("../models/Querries"));
+const Querriesvalidation_1 = require("../validations/Querriesvalidation");
 const createQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const { author, email, content } = req.body;
+        const { error } = Querriesvalidation_1.Queryval.validate({ author, email, content });
+        if (error) {
+            return res.status(400).json({ error: error.details[0].message });
+        }
         const thisquerries = yield req.body;
         if (!thisquerries) {
             return res.status(400).json({ message: "required" });
         }
         const realquerry = new Querries_1.default({ author: req.body.author, content: req.body.content,
-            email: req.body.email, createdAt: req.body.createdAt });
+            email: req.body.email, date: req.body.date });
         yield realquerry.save();
         res.json(realquerry);
     }

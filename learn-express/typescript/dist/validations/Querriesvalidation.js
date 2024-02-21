@@ -7,7 +7,6 @@ exports.Queryval = void 0;
 const joi_1 = __importDefault(require("joi"));
 exports.Queryval = joi_1.default.object({
     author: joi_1.default.string().min(3).required(),
-    email: joi_1.default.string().min(6).required(),
-    content: joi_1.default.string().min(3).required(),
-    createdAt: joi_1.default.number(),
+    email: joi_1.default.string().email({ tlds: { allow: false } }).min(6).required(),
+    content: joi_1.default.string().min(3).required()
 });

@@ -1,3 +1,4 @@
+import { number } from 'joi';
 import { Schema, model } from 'mongoose';
 
 // interface IComment extends Document {
@@ -10,11 +11,12 @@ import { Schema, model } from 'mongoose';
 // }
 
 const commentSchema = new Schema({
-  author:String,
+  name:String,
   email:String,
   content:String,
   blog:String,
-  createdAt:String,
+  date:{type:Date, default:Date.now}
+ 
 });
 
 const Comment = model('Comment', commentSchema);

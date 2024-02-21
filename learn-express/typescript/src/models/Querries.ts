@@ -1,3 +1,4 @@
+import { date, number } from "joi";
 import {Schema,model} from "mongoose";
 
 
@@ -12,7 +13,7 @@ import {Schema,model} from "mongoose";
     author:String,
     email:String,
     content:String,
-    createdAt:String,
+    date:{type:Date, default:Date.now}
   });
   const Querry=model('querry',querryschema);
   export default Querry;

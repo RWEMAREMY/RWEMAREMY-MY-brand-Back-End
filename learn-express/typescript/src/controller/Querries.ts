@@ -5,12 +5,18 @@ import {Queryval} from '../validations/Querriesvalidation';
 
 export const createQuerry =async(req:Request,res:Response)=>{
     try{
+
+        const {author,email,content}=req.body;
+        const { error } = Queryval.validate({ author,email,content });
+        if (error) {
+          return res.status(400).json({ error: error.details[0].message });
+        }
         const thisquerries=await req.body;
         if(!thisquerries){
             return res.status(400).json({message:"required"});
         }
         const realquerry = new Querry({author:req.body.author,content:req.body.content,
-            email:req.body.email,createdAt: req.body.createdAt})
+            email:req.body.email,date:req.body.date})
            await realquerry.save()
            res.json(realquerry)
     }
