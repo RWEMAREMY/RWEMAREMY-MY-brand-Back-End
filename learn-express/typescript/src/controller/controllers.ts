@@ -1,25 +1,25 @@
 import {Request,Response}  from "express";
 import cloudinary from "../accesories/cloudinary";
 import post from '../models/post';
-import{Error} from 'mongoose';
+import schema2 from '../models/post';
 import {postval} from '../validations/postvalidation';
+import like from '../models/likes';
 export const createBlog = async (req: Request, res: Response) => {
    
     try {
-
         const {title,content}=req.body;
-        console.log(req.body)
+        
 
         const { error } = postval.validate({ title,content });
         if (error) {
           return res.status(400).json({ error: error.details[0].message});
         }
 if(!req.file){
-    return
+    return res.status(400).json({ error: "Image file is required" })
 }
-        //const result = await cloudinary.uploader.upload(req?.file);
+        const result = await cloudinary.uploader.upload(req.file.path);
         const blog = await post.create({title,
-            content,//image: result.secure_url
+            content,image: result.secure_url
             });
         res.status(201).json(blog);
     } catch (err:any) {
@@ -34,6 +34,7 @@ export const getBlog = async (req: Request, res: Response) => {
         res.status(400).json({ message: err.message });
     }
 };
+
 
 export const getBlogById = async (req: Request, res: Response) => {
     try {
@@ -96,4 +97,17 @@ export const likeBlog = async(req: Request, res: Response)=> {
       res.status(500).json({ message: 'Internal Server Error' });
     }
   };
+  export const getlikeBlog = async (req: Request, res: Response) => {
+   
+    try {
+        const {_id,likes}=req.body;
+        const blog = await schema2.find();
+        res.send(blog);
+    } catch (err:any) {
+        res.status(400).json({ message: err.message });
+    }
+};
+
+
+
 

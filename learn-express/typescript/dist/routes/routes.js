@@ -31,6 +31,9 @@ const express_1 = __importDefault(require("express"));
 const commentController_1 = require("../controller/commentController");
 const query = __importStar(require("../controller/Querries"));
 const multer_1 = __importDefault(require("../accesories/multer"));
+const userpass_1 = __importDefault(require("../accesories/userpass"));
+const AuthController = __importStar(require("../controller/user"));
+const userpass_2 = __importDefault(require("../accesories/userpass"));
 //  const Post = require("./models/post");
 // import post from "../models/post"
 // import Querry from '../models/Querries';
@@ -94,13 +97,16 @@ router.route('/blogs/:id/comments').get(commentController_1.getComments);
 router.route('/blogs/:id/comments/:id').get(commentController_1.getBlogComment);
 router.route('/blogs/:id/comments/:id').delete(commentController_1.deleteComment);
 router.route('/blogs/:id/comments/:id').patch(commentController_1.Commentupdate);
+router.get('/blogs/like/', controllers.getlikeBlog);
 /////////////////Querries section///////////////
 router.post('/query', query.createQuerry);
 router.get('/query', query.getallQuerry);
 router.get('/query/:id', query.getSingleQuerry);
-////////////////likes/////////////////////////
-// router.route('/blogs/:id/likes').post(createlike);
-// router.route('/blogs/:id/likes').get(alllikes);
-// router.route('/blogs/:id/likes/:id').get(getSinglelikes);
+///////////////////likes//////////////////////////////
 router.post('/blogs/:id/like', controllers.likeBlog);
+router.get('/blogslikes', controllers.getlikeBlog);
+////////////////////////////////////////////////////
+router.post('/register', userpass_2.default.authenticate('register', { session: false }), AuthController.register);
+router.post('/login', AuthController.login);
+router.get('/profiles', userpass_1.default.authenticate('jwt', { session: false }), AuthController.secureRoute);
 exports.default = router;

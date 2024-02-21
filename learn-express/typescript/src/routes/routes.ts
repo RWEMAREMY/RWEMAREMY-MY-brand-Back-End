@@ -3,6 +3,10 @@ import express from 'express';
 import { createComment, getComments,getBlogComment,deleteComment,Commentupdate } from '../controller/commentController';
 import *as query from '../controller/Querries';
 import save from '../accesories/multer';
+import { Router } from 'express';
+import Passport from '../accesories/userpass'
+import * as AuthController from '../controller/user';
+import passport from '../accesories/userpass'
 //  const Post = require("./models/post");
 // import post from "../models/post"
 // import Querry from '../models/Querries';
@@ -75,22 +79,26 @@ router.patch('/blogs/:id', controllers.updateBlog);
 router.delete('/blogs/:id', controllers.deleteBlog);
 
      //////Comment Section//////////////////////
+
 router.route('/blogs/:id/comments').post(createComment);
 router.route('/blogs/:id/comments').get(getComments);
 router.route('/blogs/:id/comments/:id').get(getBlogComment);
 router.route('/blogs/:id/comments/:id').delete(deleteComment);
 router.route('/blogs/:id/comments/:id').patch(Commentupdate);
-
+router.get('/blogs/like/', controllers.getlikeBlog);
 /////////////////Querries section///////////////
 
 router.post('/query', query.createQuerry);
 router.get('/query',query.getallQuerry);
 router.get('/query/:id', query.getSingleQuerry);
+///////////////////likes//////////////////////////////
 
-////////////////likes/////////////////////////
-// router.route('/blogs/:id/likes').post(createlike);
-// router.route('/blogs/:id/likes').get(alllikes);
-// router.route('/blogs/:id/likes/:id').get(getSinglelikes);
 router.post('/blogs/:id/like', controllers.likeBlog);
+router.get('/blogslikes', controllers.getlikeBlog);
+////////////////////////////////////////////////////
+
+router.post('/register', passport.authenticate('register', { session: false }), AuthController.register);
+router.post('/login', AuthController.login);
+router.get('/profiles', Passport.authenticate('jwt', { session: false }), AuthController.secureRoute);
 
 export default router

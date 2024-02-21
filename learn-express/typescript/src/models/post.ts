@@ -8,5 +8,11 @@ id:{type:String},
  likes:{type:Number ,default: 0}
  
  })
+ export const schema2 = new mongoose.Schema({
+    id:{type:String},
+     likes:{type:Number ,default: 0}
+ 
+     })
+     
  export default mongoose.model("Post", schema)
 
