@@ -12,43 +12,94 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.secureRoute = exports.login = exports.register = void 0;
-const userpass_1 = __importDefault(require("../accesories/userpass"));
+exports.loginUser = exports.createUser = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const register = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    res.json({
-        message: 'register successful',
-        user: req.user
-    });
-});
-exports.register = register;
-const login = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    userpass_1.default.authenticate('login', (err, user, info) => __awaiter(void 0, void 0, void 0, function* () {
-        try {
-            if (err || !user) {
-                const error = new Error((info === null || info === void 0 ? void 0 : info.message) || 'An error occurred.');
-                return next(error);
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
+const dotenv_1 = __importDefault(require("dotenv"));
+const lodash_1 = __importDefault(require("lodash"));
+const userval_1 = require("../validations/userval");
+const user_1 = __importDefault(require("../models/user"));
+dotenv_1.default.config();
+const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const userData = lodash_1.default.pick(req.body, ["userName", "email", "password"]);
+    const { error } = userval_1.expectedNewUser.validate(userData);
+    if (error) {
+        res.status(400).send({ data: [], message: "", error: error.message });
+        return;
+    }
+    try {
+        const user = yield user_1.default.findOne({ email: userData.email });
+        if (user) {
+            res
+                .status(400)
+                .send({ data: [], message: "User already exist", error: "" });
+            return;
+        }
+        else {
+            const hashedPassword = bcryptjs_1.default.hashSync(userData.password, 9);
+            const newUser = new user_1.default(Object.assign(Object.assign({}, userData), { password: hashedPassword }));
+            const created = yield newUser.save();
+            if (created) {
+                const jwtSecret = process.env.JWT_SECRET || "secret";
+                const tokenExpire = process.env.TOKEN_EXPIRES || "1h";
+                const token = jsonwebtoken_1.default.sign({ userId: created._id }, jwtSecret, {
+                    expiresIn: tokenExpire,
+                });
+                res.status(200).header("Authorization", `Bearer ${token}`).send({
+                    message: "Signed in successfully!!",
+                    token: token,
+                });
             }
-            req.login(user, { session: false }, (error) => __awaiter(void 0, void 0, void 0, function* () {
-                if (error)
-                    return next(error);
-                const body = { _id: user._id, email: user.email };
-                const token = jsonwebtoken_1.default.sign({ user: body }, 'TOP_SECRET');
-                const message = info.message;
-                return res.json({ token, message });
-            }));
         }
-        catch (error) {
-            return next(error);
-        }
-    }))(req, res, next);
+    }
+    catch (error) {
+        res.status(400).send({ data: [], message: "", error: error.message });
+    }
 });
-exports.login = login;
-const secureRoute = (req, res, next) => {
-    res.json({
-        message: 'You made it to the secure route',
-        user: req.user,
-        token: req.query.secret_token
-    });
-};
-exports.secureRoute = secureRoute;
+exports.createUser = createUser;
+const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const userData = lodash_1.default.pick(req.body, ["email", "password"]);
+    const { error } = userval_1.expectedLogin.validate(userData);
+    if (error) {
+        return res
+            .status(400)
+            .send({ data: [], message: "", error: error.message });
+    }
+    try {
+        const user = yield user_1.default.findOne({ email: userData.email });
+        if (user) {
+            const isValid = yield bcryptjs_1.default.compareSync(userData.password, user.password);
+            if (!isValid) {
+                return res.status(400).send({
+                    data: [],
+                    message: "Invalid email or password ...",
+                    error: null,
+                });
+            }
+            else {
+                const jwtSecret = process.env.JWT_SECRET || "secret";
+                const tokenExpire = process.env.TOKEN_EXPIRES || "1h";
+                const token = jsonwebtoken_1.default.sign({ userId: user._id }, jwtSecret, {
+                    expiresIn: tokenExpire,
+                });
+                res.status(200).header("Authorization", `Bearer ${token}`).send({
+                    message: "Log-in successfully!!",
+                    token: token,
+                });
+            }
+        }
+        else {
+            return res.status(400).send({
+                data: [],
+                message: "User not found please register!!",
+                error: null,
+            });
+        }
+    }
+    catch (error) {
+        return res
+            .status(400)
+            .send({ data: [], message: "", error: error.message });
+    }
+});
+exports.loginUser = loginUser;

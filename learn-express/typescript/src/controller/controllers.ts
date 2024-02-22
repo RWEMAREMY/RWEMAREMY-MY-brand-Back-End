@@ -99,12 +99,15 @@ export const likeBlog = async(req: Request, res: Response)=> {
   };
   export const getlikeBlog = async (req: Request, res: Response) => {
    
-    try {
-        const {_id,likes}=req.body;
-        const blog = await schema2.find();
-        res.send(blog);
-    } catch (err:any) {
-        res.status(400).json({ message: err.message });
+      try {
+        const blog = await post.findById(req.params.id);
+        
+        if (!blog) {
+            return res.status(404).json({ message: 'Blog not found' });
+        }
+        res.json(blog);
+    } catch (err: any) {
+        res.status(500).json({ message: (err as Error).message });
     }
 };
 

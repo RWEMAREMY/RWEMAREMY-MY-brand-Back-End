@@ -31,9 +31,8 @@ const express_1 = __importDefault(require("express"));
 const commentController_1 = require("../controller/commentController");
 const query = __importStar(require("../controller/Querries"));
 const multer_1 = __importDefault(require("../accesories/multer"));
-const userpass_1 = __importDefault(require("../accesories/userpass"));
-const AuthController = __importStar(require("../controller/user"));
-const userpass_2 = __importDefault(require("../accesories/userpass"));
+const theUser = __importStar(require("../controller/user"));
+const authenticatepass_1 = require("../middlewear/authenticatepass");
 //  const Post = require("./models/post");
 // import post from "../models/post"
 // import Querry from '../models/Querries';
@@ -86,11 +85,11 @@ const router = express_1.default.Router();
 //        res.send({ error: "Post doesn't exist!" })
 //    }
 // })
-router.post('/blogs', multer_1.default.single("image"), controllers.createBlog);
+router.post('/blogs', authenticatepass_1.isAuthenticated, authenticatepass_1.isAdmin, multer_1.default.single("image"), controllers.createBlog);
 router.get('/blogs', controllers.getBlog);
 router.get('/blogs/:id', controllers.getBlogById);
-router.patch('/blogs/:id', controllers.updateBlog);
-router.delete('/blogs/:id', controllers.deleteBlog);
+router.patch('/blogs/:id', authenticatepass_1.isAuthenticated, authenticatepass_1.isAdmin, controllers.updateBlog);
+router.delete('/blogs/:id', authenticatepass_1.isAuthenticated, authenticatepass_1.isAdmin, controllers.deleteBlog);
 //////Comment Section//////////////////////
 router.route('/blogs/:id/comments').post(commentController_1.createComment);
 router.route('/blogs/:id/comments').get(commentController_1.getComments);
@@ -104,9 +103,8 @@ router.get('/query', query.getallQuerry);
 router.get('/query/:id', query.getSingleQuerry);
 ///////////////////likes//////////////////////////////
 router.post('/blogs/:id/like', controllers.likeBlog);
-router.get('/blogslikes', controllers.getlikeBlog);
+router.get('/blogslikes/:id', controllers.getlikeBlog);
 ////////////////////////////////////////////////////
-router.post('/register', userpass_2.default.authenticate('register', { session: false }), AuthController.register);
-router.post('/login', AuthController.login);
-router.get('/profiles', userpass_1.default.authenticate('jwt', { session: false }), AuthController.secureRoute);
+router.post("/signup", theUser.createUser);
+router.post("/login", theUser.loginUser);
 exports.default = router;

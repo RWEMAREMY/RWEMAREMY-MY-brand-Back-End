@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getlikeBlog = exports.likeBlog = exports.deleteBlog = exports.updateBlog = exports.getBlogById = exports.getBlog = exports.createBlog = void 0;
 const cloudinary_1 = __importDefault(require("../accesories/cloudinary"));
 const post_1 = __importDefault(require("../models/post"));
-const post_2 = __importDefault(require("../models/post"));
 const postvalidation_1 = require("../validations/postvalidation");
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -115,12 +114,14 @@ const likeBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.likeBlog = likeBlog;
 const getlikeBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { _id, likes } = req.body;
-        const blog = yield post_2.default.find();
-        res.send(blog);
+        const blog = yield post_1.default.findById(req.params.id);
+        if (!blog) {
+            return res.status(404).json({ message: 'Blog not found' });
+        }
+        res.json(blog);
     }
     catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(500).json({ message: err.message });
     }
 });
 exports.getlikeBlog = getlikeBlog;
