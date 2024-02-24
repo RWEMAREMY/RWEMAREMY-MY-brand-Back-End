@@ -8,11 +8,11 @@ import { isAdmin, isAuthenticated } from "../middlewear/authenticatepass";
 const router = express.Router()
 
 
-router.post('/blogs', isAuthenticated, isAdmin,save.single("image"),controllers.createBlog);
+router.post('/blogs',save.single("image"),controllers.createBlog);// isAuthenticated, isAdmin,
 router.get('/blogs', controllers.getBlog);
 router.get('/blogs/:id', controllers.getBlogById);
-router.patch('/blogs/:id',isAuthenticated, isAdmin, controllers.updateBlog);
-router.delete('/blogs/:id',isAuthenticated, isAdmin, controllers.deleteBlog);
+router.patch('/blogs/:id', controllers.updateBlog);// isAuthenticated, isAdmin,
+router.delete('/blogs/:id', controllers.deleteBlog);// isAuthenticated, isAdmin,
 
 //////Comment Section//////////////////////
 

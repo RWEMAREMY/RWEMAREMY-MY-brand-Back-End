@@ -79,7 +79,7 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             else {
                 const jwtSecret = process.env.JWT_SECRET || "secret";
                 const tokenExpire = process.env.TOKEN_EXPIRES || "1h";
-                const token = jsonwebtoken_1.default.sign({ userId: user._id }, jwtSecret, {
+                const token = jsonwebtoken_1.default.sign({ userId: user._id, name: user.userName, email: user.email, role: user.role }, jwtSecret, {
                     expiresIn: tokenExpire,
                 });
                 res.status(200).header("Authorization", `Bearer ${token}`).send({

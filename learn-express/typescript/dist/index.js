@@ -32,6 +32,9 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use("/api", routes_js_1.default);
 const connectToDB = () => __awaiter(void 0, void 0, void 0, function* () {
+    const port = process.env.PORT;
+    app.use(express_1.default.json());
+    app.use("/api", routes_js_1.default);
     try {
         yield mongoose_1.default.connect("mongodb://127.0.0.1:27017/acmedb?useNewUrlParser=true");
         console.log("Connected to MongoDb");
@@ -45,3 +48,4 @@ connectToDB();
 app.listen(port, () => {
     console.log("Server has started!");
 });
+exports.default = app;

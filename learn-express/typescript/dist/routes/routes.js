@@ -32,64 +32,12 @@ const commentController_1 = require("../controller/commentController");
 const query = __importStar(require("../controller/Querries"));
 const multer_1 = __importDefault(require("../accesories/multer"));
 const theUser = __importStar(require("../controller/user"));
-const authenticatepass_1 = require("../middlewear/authenticatepass");
-//  const Post = require("./models/post");
-// import post from "../models/post"
-// import Querry from '../models/Querries';
-// express.Router(".models/post");
 const router = express_1.default.Router();
-// router.get("/blogs", async (req, res) => {
-//    const blogs = await Post.find()
-//     res.send(blogs)
-//    })
-//  router.post("/blogs", async (req, res) => {
-//     const post =
-//    new Post({
-//     title: req.body.title,
-//     content: req.body.content,
-//     })
-//     await post.save()
-//     res.send(post)
-//     })
-//     router.get("/blogs/:id", async (req, res) => {
-//       try {
-//          const post = await Post.findOne({ _id: req.params.id })
-//          res.send(post)
-//      } catch {
-//          res.status(404)
-//          res.send({ error: "Post doesn't exist!" })
-//      }
-//   })
-//   router.patch("/blogs/:id", async (req, res) => {
-//    try {
-//        const post = await Post.findOne({ _id: req.params.id })
-//        if (req.body.title) {
-//            post.title = req.body.title
-//        }
-//        if (req.body.content) {
-//            post.content = req.body.content
-//        }
-//        await post.save()
-//        res.send(post)
-//    } catch {
-//        res.status(404)
-//        res.send({ error: "Post doesn't exist!" })
-//    }
-// })
-// router.delete("/blogs/:id", async (req, res) => {
-//    try {
-//        await Post.deleteOne({ _id: req.params.id })
-//        res.status(204).send()
-//    } catch {
-//        res.status(404)
-//        res.send({ error: "Post doesn't exist!" })
-//    }
-// })
-router.post('/blogs', authenticatepass_1.isAuthenticated, authenticatepass_1.isAdmin, multer_1.default.single("image"), controllers.createBlog);
+router.post('/blogs', multer_1.default.single("image"), controllers.createBlog); // isAuthenticated, isAdmin,
 router.get('/blogs', controllers.getBlog);
 router.get('/blogs/:id', controllers.getBlogById);
-router.patch('/blogs/:id', authenticatepass_1.isAuthenticated, authenticatepass_1.isAdmin, controllers.updateBlog);
-router.delete('/blogs/:id', authenticatepass_1.isAuthenticated, authenticatepass_1.isAdmin, controllers.deleteBlog);
+router.patch('/blogs/:id', controllers.updateBlog); // isAuthenticated, isAdmin,
+router.delete('/blogs/:id', controllers.deleteBlog); // isAuthenticated, isAdmin,
 //////Comment Section//////////////////////
 router.route('/blogs/:id/comments').post(commentController_1.createComment);
 router.route('/blogs/:id/comments').get(commentController_1.getComments);

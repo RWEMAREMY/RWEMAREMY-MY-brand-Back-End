@@ -22,7 +22,13 @@ app.use(express.json());
 app.use("/api", routes);
 const connectToDB = async () => {
  
-  
+ 
+const port = process.env.PORT;
+
+
+app.use(express.json());
+
+app.use("/api", routes);
   try {
     await mongoose.connect("mongodb://127.0.0.1:27017/acmedb?useNewUrlParser=true"
     )
@@ -36,3 +42,6 @@ connectToDB();
 app.listen(port, () => {
   console.log("Server has started!");
 });
+
+
+export default app;
