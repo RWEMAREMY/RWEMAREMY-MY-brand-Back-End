@@ -1,10 +1,12 @@
 
 import express from "express";
 import mongoose from "mongoose";
-import routes from "./routes/routes.js";
+import routes from "./routes/routes";
 import dotenv from "dotenv";
+import DB from "./config/DB";
+
 dotenv.config();
-const port: number = parseInt(process.env.PORT!, 10);
+ const port=process.env.PORT;
 
 // mongoose
 //   .connect("mongodb://localhost:27017/acmedb", { useNewUrlParser: true })
@@ -20,25 +22,8 @@ const port: number = parseInt(process.env.PORT!, 10);
 const app = express();
 app.use(express.json());
 app.use("/api", routes);
-const connectToDB = async () => {
- 
- 
-const port = process.env.PORT;
 
-
-app.use(express.json());
-
-app.use("/api", routes);
-  try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/acmedb?useNewUrlParser=true"
-    )
-    console.log("Connected to MongoDb");
-  } catch (error) {
-    console.log(error);
-    // process.exit(1);
-  }
-};
-connectToDB();
+DB();
 app.listen(port, () => {
   console.log("Server has started!");
 });

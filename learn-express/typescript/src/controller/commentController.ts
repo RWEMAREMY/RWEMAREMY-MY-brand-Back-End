@@ -21,7 +21,6 @@ export const createComment = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'Content is required' });
     }
 
-    
     const comment = new Comment({ content:contents,email:req.body.email,
       name:req.body.name,date:req.body.date, blog: blogId });
 
