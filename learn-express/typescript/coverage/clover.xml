@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1708940392779" clover="3.2.0">
-  <project timestamp="1708940392780" name="All files">
-    <metrics statements="265" coveredstatements="177" conditionals="34" coveredconditionals="7" methods="38" coveredmethods="33" elements="337" coveredelements="217" complexity="0" loc="265" ncloc="265" packages="7" files="17" classes="17"/>
+<coverage generated="1708953268763" clover="3.2.0">
+  <project timestamp="1708953268764" name="All files">
+    <metrics statements="265" coveredstatements="186" conditionals="34" coveredconditionals="13" methods="38" coveredmethods="33" elements="337" coveredelements="232" complexity="0" loc="265" ncloc="265" packages="7" files="17" classes="17"/>
     <package name="src">
       <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="index.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\index.ts">
@@ -63,7 +63,7 @@
       </file>
     </package>
     <package name="src.controller">
-      <metrics statements="176" coveredstatements="94" conditionals="30" coveredconditionals="7" methods="34" coveredmethods="30"/>
+      <metrics statements="176" coveredstatements="103" conditionals="30" coveredconditionals="13" methods="34" coveredmethods="30"/>
       <file name="Querries.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\controller\Querries.ts">
         <metrics statements="27" coveredstatements="16" conditionals="3" coveredconditionals="1" methods="6" coveredmethods="6"/>
         <line num="2" count="1" type="stmt"/>
@@ -206,7 +206,7 @@
         <line num="110" count="0" type="stmt"/>
       </file>
       <file name="user.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\controller\user.ts">
-        <metrics statements="44" coveredstatements="18" conditionals="17" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <metrics statements="44" coveredstatements="27" conditionals="17" coveredconditionals="8" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -234,21 +234,21 @@
         <line num="33" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="51" count="1" type="stmt"/>
-        <line num="52" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="53" count="1" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="60" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="65" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="60" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="65" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="66" count="0" type="stmt"/>
-        <line num="72" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="73" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="78" count="0" type="stmt"/>
+        <line num="72" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="73" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
         <line num="84" count="0" type="stmt"/>
         <line num="91" count="0" type="stmt"/>
       </file>

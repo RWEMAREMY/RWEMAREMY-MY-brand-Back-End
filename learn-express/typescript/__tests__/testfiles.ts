@@ -4,6 +4,7 @@ import superApp, {Request, Response} from 'supertest'
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import supertest from 'supertest';
+import { ObjectId } from 'mongodb';
 
 dotenv.config();
 const DB_URL = process.env.MONGODB_URL|| '';
@@ -106,3 +107,23 @@ describe('routes', () =>{
 
 
 });
+
+
+describe('check out authentication',()=>{
+
+    // it('new account',async()=>{
+    //     const create  = await supertest(app).post("/api/signup")
+    //     .send({userName:"rwema", email:"rwemaremy21@gmail.com",password:'Remyzo@21'})
+    //     expect(create.status).toBe(200);
+    // })
+    const id = '65dc2e9f2bc9e70903b2487b';
+describe("Logging in", () => {
+  const token: { token: string } = { token: '' };
+  it("should login in", async () => {
+    const response = await supertest(app).post("/api/login")
+      .send({ email: "rwemaremy21@gmail.com", password: 'Remyzo@21' });
+    token.token = response.body.token;
+    expect(response.status).toBe(200);
+  })
+})
+})
