@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import _ from "lodash";
+import { Strategy as JwtStrategy, ExtractJwt, VerifiedCallback } from 'passport-jwt';
 import { Response, Request, NextFunction } from "express";
 import  { userInterface } from "../models/user";
 import passport from 'passport';
