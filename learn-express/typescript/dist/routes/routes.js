@@ -32,9 +32,8 @@ const commentController_1 = require("../controller/commentController");
 const query = __importStar(require("../controller/Querries"));
 const multer_1 = __importDefault(require("../accesories/multer"));
 const theUser = __importStar(require("../controller/user"));
-const authenticatepass_1 = require("../middlewear/authenticatepass");
 const router = express_1.default.Router();
-router.post('/blogs', authenticatepass_1.isAuthenticated, authenticatepass_1.isAdmin, multer_1.default.single("image"), controllers.createBlog); // isAuthenticated, isAdmin,
+router.post('/blogs', multer_1.default.single("image"), controllers.createBlog); // isAuthenticated, isAdmin,
 router.get('/blogs', controllers.getBlog);
 router.get('/blogs/:id', controllers.getBlogById);
 router.patch('/blogs/:id', controllers.updateBlog); // isAuthenticated, isAdmin,

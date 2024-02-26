@@ -46,8 +46,7 @@ const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
                     expiresIn: tokenExpire,
                 });
                 res.status(200).header("Authorization", `Bearer ${token}`).send({
-                    message: "Signed in successfully!!",
-                    token: token,
+                    message: "created successfully!!",
                 });
             }
         }

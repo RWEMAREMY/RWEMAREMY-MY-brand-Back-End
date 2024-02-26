@@ -35,8 +35,8 @@ export const createUser = async (req: Request, res: Response) => {
         });
 
         res.status(200).header("Authorization", `Bearer ${token}`).send({
-          message: "Signed in successfully!!",
-          token: token,
+          message: "created successfully!!",
+          
         });
       }
     }
