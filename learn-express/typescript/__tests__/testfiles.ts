@@ -135,4 +135,18 @@ const res=await supertest(app).post('/api/users/register')
 })
 expect(res.status).toBe(404)
 })
+it('should be created',async ()=>{
+    const id= "65dd9f7d6c9d4e6708a23b3b"
+const res=await supertest(app).post('/api/blogs/65d48af2180f82e73b6aa5c1/comments')
+.send({
+    name:"james",
+    email:"james24@gmail.com",
+   content:"we have been using typescript",
+   blog:"65d48af2180f82e73b6aa5c1"
 })
+console.log(res.body)
+expect(res.status).toBe(201)
+})
+
+ });
+
