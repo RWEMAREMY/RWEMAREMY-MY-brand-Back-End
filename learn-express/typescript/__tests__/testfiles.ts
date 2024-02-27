@@ -108,7 +108,7 @@ describe('routes', () =>{
 
 });
 
-
+// should be created
 describe('check out authentication',()=>{
 
     // it('new account',async()=>{
@@ -126,6 +126,7 @@ describe("Logging in", () => {
     expect(response.status).toBe(200);
   })
 })
+// should be created
 it('should not register with wrong password',async ()=>{
 const res=await supertest(app).post('/api/users/register')
 .send({
@@ -135,6 +136,7 @@ const res=await supertest(app).post('/api/users/register')
 })
 expect(res.status).toBe(404)
 })
+// should be created
 it('should be created',async ()=>{
     const id= "65dd9f7d6c9d4e6708a23b3b"
 const res=await supertest(app).post('/api/blogs/65d48af2180f82e73b6aa5c1/comments')
@@ -149,5 +151,5 @@ expect(res.status).toBe(201)
 })
 
  });
- 
+
 
