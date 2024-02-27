@@ -126,4 +126,13 @@ describe("Logging in", () => {
     expect(response.status).toBe(200);
   })
 })
+it('should not register with wrong password',async ()=>{
+const res=await supertest(app).post('/api/users/register')
+.send({
+    userName:"james",
+    email:"james24@gmail.com",
+    password:"james@24!"
+})
+expect(res.status).toBe(404)
+})
 })
