@@ -118,13 +118,13 @@ describe('check out authentication',()=>{
     // })
     const id = '65dc2e9f2bc9e70903b2487b';
 describe("Logging in", () => {
-  const token: { token: string } = { token: '' };
+  let token: { token: string } = { token: '' };
   it("should login in", async () => {
     const response = await supertest(app).post("/api/login")
       .send({ email: "rwemaremy21@gmail.com", password: 'Remyzo@21' });
     token.token = response.body.token;
     expect(response.status).toBe(200);
-  })
+  },5000)
 })
 it('should not register with wrong password',async ()=>{
 const res=await supertest(app).post('/api/users/register')

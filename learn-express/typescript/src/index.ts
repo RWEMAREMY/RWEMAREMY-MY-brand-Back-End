@@ -4,6 +4,12 @@ import mongoose from "mongoose";
 import routes from "./routes/routes";
 import dotenv from "dotenv";
 import DB from "./config/DB";
+import * as swaggerDocument from "./swagger.json";
+import swaggerUI from "swagger-ui-express";
+import cors from "cors";
+
+
+
 
 dotenv.config();
  const port=process.env.PORT;
@@ -27,6 +33,6 @@ DB();
 app.listen(port, () => {
   console.log("Server has started!");
 });
-
-
+app.use('/docs', swaggerUI.serve,swaggerUI.setup(swaggerDocument))
+app.use(cors());
 export default app;
