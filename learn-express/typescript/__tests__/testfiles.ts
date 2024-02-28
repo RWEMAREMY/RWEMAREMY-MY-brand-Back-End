@@ -5,26 +5,29 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import supertest from 'supertest';
 import { ObjectId } from 'mongodb';
+import { title } from 'process';
 
 dotenv.config();
 const DB_URL = process.env.MONGODB_URL|| '';
 
 beforeAll(async() =>{
     await mongoose.connect(DB_URL);
-},50000);
+},100000);
 
 afterAll(async() =>{
     await mongoose.connection.close();
 });
+
+const token2: { token2: string } = { token2: '' };
 
 describe('routes', () =>{
     it('/api/ for 404', async()=>{
         const result  = await supertest(app).get('/api/');
         expect(result.status).toBe(404);
     })
-    it('/api/ for 404', async()=>{
-        const show  = await supertest(app).get('/api/blog');
-        expect(show.status).toBe(404);
+    it('/api/ for 200', async()=>{
+        const show  = await supertest(app).get('/api/blogs');
+        expect(show.status).toBe(200);
     })
     it('/api/ for 200', async()=>{
         const show  = await supertest(app).get('/api/query');
@@ -39,10 +42,15 @@ describe('routes', () =>{
         expect(show.status).toBe(404);
     })
 
-    it('login authentication', async() =>{
-        const show  = await supertest(app).post('/api/login');
-            expect(show.status).toBe(400);
+    it('login',async()=>{
+        const show= await supertest(app).post('/api/login').send({
+email:"rwemaremy21@gmail.com",
+password:"Remyzo@21",
+});
+token2.token2 = show.body.token;
+expect(show.statusCode).toBe(200)
     })
+
     it('login authentication', async() =>{
         const show  = await supertest(app).post("/api/signup");
             expect(show.status).toBe(400);
@@ -68,10 +76,14 @@ describe('routes', () =>{
             expect(show.status).toBe(404);
     })
     it('blogs', async() =>{
-        const show  = await supertest(app).post("/api/blogs");
+        const show  = await supertest(app).post("/api/blogs").send({
+            
+            content:"we are having",
+            image:""
+        })
             expect(show.status).toBe(400);
     })
-    it('blogs', async() =>{
+    it('blogs post', async() =>{
         const show  = await supertest(app).get("/api/blogs");
             expect(show.status).toBe(200);
     })
@@ -79,10 +91,17 @@ describe('routes', () =>{
         const show  = await supertest(app).get("/api/blogs/:id");
             expect(show.status).toBe(500);
     })
-    it('controller', async() =>{
-        const show  = await supertest(app).patch("/api/blogs/:id");
-            expect(show.status).toBe(400);
-    })
+    it('editing a blog', async () => {
+        const res = await supertest(app)
+          .patch('/api/blogs/65d5ce903db137226ca0025c')
+          .send({
+          
+            content: "Testing 1",
+          })
+          .set('Authorization', 'Bearer ' + token2.token2);
+        expect(res.statusCode).toBe(400)
+      });
+
     it('comment', async() =>{
         const show  = await supertest(app).post("/api/blogs/:id/comments");
             expect(show.status).toBe(400);
@@ -144,9 +163,9 @@ const res=await supertest(app).post('/api/blogs/65d48af2180f82e73b6aa5c1/comment
     name:"james",
     email:"james24@gmail.com",
    content:"we have been using typescript",
-   blog:"65d48af2180f82e73b6aa5c1"
+
 })
-console.log(res.body)
+
 expect(res.status).toBe(201)
 })
 

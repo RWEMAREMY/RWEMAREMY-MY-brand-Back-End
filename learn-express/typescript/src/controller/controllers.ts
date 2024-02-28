@@ -29,7 +29,7 @@ if(!req.file){
 export const getBlog = async (req: Request, res: Response) => {
     try {
         const blog = await post.find();
-        res.send(blog);
+        res.status(200).json(blog);
     } catch (err:any) {
         res.status(400).json({ message: err.message });
     }
@@ -67,7 +67,7 @@ export const updateBlog = async (req: Request, res: Response) => {
           return res.status(400).json({ error: error.details[0].message });
         }
         const blog = await post.findByIdAndUpdate(req.params.id, { title,content }, { new: true });
-        res.json(blog);
+        res.status(200).json(blog);
     } catch (err: any) {
         res.status(400).json({ message: err.message });
     }

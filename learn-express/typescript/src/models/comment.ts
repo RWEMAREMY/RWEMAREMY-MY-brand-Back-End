@@ -1,5 +1,5 @@
 import { number } from 'joi';
-import { Schema, model } from 'mongoose';
+import { Schema, Types, model } from 'mongoose';
 
 // interface IComment extends Document {
   
@@ -14,7 +14,7 @@ const commentSchema = new Schema({
   name:String,
   email:String,
   content:String,
-  blog:String,
+  blog:Types.ObjectId,
   date:{type:Date, default:Date.now}
  
 });
