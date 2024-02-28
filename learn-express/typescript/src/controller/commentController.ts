@@ -1,6 +1,7 @@
 // src/controllers/commentController.ts
 import { Request, Response } from 'express';
 import Comment from '../models/comment';
+import post from '../models/post';
 import { Error} from 'mongoose';
 import {commentval} from '../validations/commentsvalidation';
 // import jwt from 'jsonwebtoken';
@@ -8,28 +9,22 @@ import {commentval} from '../validations/commentsvalidation';
 
 export const createComment = async (req: Request, res: Response) => {
   try {
-    const {name,email,content,blog}=req.body;
-    const { error } = commentval.validate({ name,email,content,blog});
-    if (error) {
-      return res.status(400).json({ error: error.details[0].message });
+    // const { name, email, idea } = req.body;
+    const blogId = req.params.id;
+    const blog = await post.findOne({ _id: blogId });
+    if (!blog) {
+      return res.status(404).send({ error: "Not Found" });
     }
-    const contents  = await req.body.content;
-    const  blogId  = req.params.id;
-   
-    // You may want to perform additional validation on the content
-    if (!contents) {
-      return res.status(400).json({ message: 'Content is required' });
-    }
-
-    const comment = new Comment({ content:contents,email:req.body.email,
-      name:req.body.name,date:req.body.date, blog: blogId });
-
-    await comment.save();
-
-    res.status(201).json(comment);
+    const newComment = new Comment({
+      name: req.body.name, 
+      email: req.body.email, 
+      content: req.body.content, 
+      blog: blog._id,
+    });
+    await newComment.save();
+    res.status(201).json(newComment);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server Error' });
+    res.status(500).send({ error: "Error Occurred" });
   }
 };
 export const getComments = async (req: Request, res: Response) => {
@@ -38,12 +33,12 @@ export const getComments = async (req: Request, res: Response) => {
     // const commentid=req.params.id;
       const blog = await Comment.find();
      
-      res.json(blog);
+      res.status(200).json(blog);
 
-  const comment = new Comment({blog:blogId, content:req.body.content,
-    email:req.body.email,name:req.body.name ,date:req.body.date });
+  // const comment = new Comment({blog:blogId, content:req.body.content,
+  //   email:req.body.email,name:req.body.name ,date:req.body.date });
 
-  await comment.save();
+  // await comment.save();
 
   } catch (err) {
       res.status(500).json({ message: (err as Error).message });
@@ -72,13 +67,13 @@ catch(err:any){
 };
 export const Commentupdate = async (req: Request, res: Response) => {
   try {
-    const {name,email,content,blog}=req.body;
-    const { error } = commentval.validate({ name,email,content,blog });
+    const {name,email,content}=req.body;
+    const { error } = commentval.validate({ name,email,content});
     if (error) {
       return res.status(400).json({ error: error.details[0].message });
     }
-      const theblog = await Comment.findByIdAndUpdate(req.params.id, { name,email,content,blog }, { new: true });
-      res.json(theblog);
+      const theblog = await Comment.findByIdAndUpdate(req.params.id, { name,email,content }, { new: true });
+      res.status(200).json(theblog);
   } catch (err: any) {
       res.status(400).json({ message: err.message });
   }
