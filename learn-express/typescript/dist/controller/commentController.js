@@ -14,11 +14,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Commentupdate = exports.deleteComment = exports.getBlogComment = exports.getComments = exports.createComment = void 0;
 const comment_1 = __importDefault(require("../models/comment"));
+<<<<<<< HEAD
+=======
+const post_1 = __importDefault(require("../models/post"));
+>>>>>>> 03f34f19d7f7839299ec935a253b06a6590ddcc1
 const commentsvalidation_1 = require("../validations/commentsvalidation");
 // import jwt from 'jsonwebtoken';
 // import { Error } from 'mongoose';
 const createComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+<<<<<<< HEAD
         const { name, email, content, blog } = req.body;
         const { error } = commentsvalidation_1.commentval.validate({ name, email, content, blog });
         if (error) {
@@ -38,6 +43,25 @@ const createComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });
+=======
+        // const { name, email, idea } = req.body;
+        const blogId = req.params.id;
+        const blog = yield post_1.default.findOne({ _id: blogId });
+        if (!blog) {
+            return res.status(404).send({ error: "Not Found" });
+        }
+        const newComment = new comment_1.default({
+            name: req.body.name,
+            email: req.body.email,
+            content: req.body.content,
+            blog: blog._id,
+        });
+        yield newComment.save();
+        res.status(201).json(newComment);
+    }
+    catch (error) {
+        res.status(500).send({ error: "Error Occurred" });
+>>>>>>> 03f34f19d7f7839299ec935a253b06a6590ddcc1
     }
 });
 exports.createComment = createComment;
@@ -46,10 +70,17 @@ const getComments = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const blogId = req.params.id;
         // const commentid=req.params.id;
         const blog = yield comment_1.default.find();
+<<<<<<< HEAD
         res.json(blog);
         const comment = new comment_1.default({ blog: blogId, content: req.body.content,
             email: req.body.email, name: req.body.name, date: req.body.date });
         yield comment.save();
+=======
+        res.status(200).json(blog);
+        // const comment = new Comment({blog:blogId, content:req.body.content,
+        //   email:req.body.email,name:req.body.name ,date:req.body.date });
+        // await comment.save();
+>>>>>>> 03f34f19d7f7839299ec935a253b06a6590ddcc1
     }
     catch (err) {
         res.status(500).json({ message: err.message });
@@ -81,6 +112,7 @@ const deleteComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
 exports.deleteComment = deleteComment;
 const Commentupdate = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+<<<<<<< HEAD
         const { name, email, content, blog } = req.body;
         const { error } = commentsvalidation_1.commentval.validate({ name, email, content, blog });
         if (error) {
@@ -88,6 +120,15 @@ const Commentupdate = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         }
         const theblog = yield comment_1.default.findByIdAndUpdate(req.params.id, { name, email, content, blog }, { new: true });
         res.json(theblog);
+=======
+        const { name, email, content } = req.body;
+        const { error } = commentsvalidation_1.commentval.validate({ name, email, content });
+        if (error) {
+            return res.status(400).json({ error: error.details[0].message });
+        }
+        const theblog = yield comment_1.default.findByIdAndUpdate(req.params.id, { name, email, content }, { new: true });
+        res.status(200).json(theblog);
+>>>>>>> 03f34f19d7f7839299ec935a253b06a6590ddcc1
     }
     catch (err) {
         res.status(400).json({ message: err.message });

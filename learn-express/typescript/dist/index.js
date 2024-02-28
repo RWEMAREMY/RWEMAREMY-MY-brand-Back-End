@@ -1,4 +1,5 @@
 "use strict";
+<<<<<<< HEAD
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -22,6 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+=======
+>>>>>>> 03f34f19d7f7839299ec935a253b06a6590ddcc1
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -30,8 +33,11 @@ const express_1 = __importDefault(require("express"));
 const routes_1 = __importDefault(require("./routes/routes"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const DB_1 = __importDefault(require("./config/DB"));
+<<<<<<< HEAD
 const swaggerDocument = __importStar(require("./swagger.json"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+=======
+>>>>>>> 03f34f19d7f7839299ec935a253b06a6590ddcc1
 dotenv_1.default.config();
 const port = process.env.PORT;
 // mongoose
@@ -51,5 +57,8 @@ app.use("/api", routes_1.default);
 app.listen(port, () => {
     console.log("Server has started!");
 });
+<<<<<<< HEAD
 app.use('/docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocument));
+=======
+>>>>>>> 03f34f19d7f7839299ec935a253b06a6590ddcc1
 exports.default = app;
