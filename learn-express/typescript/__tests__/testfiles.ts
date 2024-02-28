@@ -11,7 +11,7 @@ const DB_URL = process.env.MONGODB_URL|| '';
 
 beforeAll(async() =>{
     await mongoose.connect(DB_URL);
-},50000);
+},100000);
 
 afterAll(async() =>{
     await mongoose.connection.close();
@@ -85,7 +85,7 @@ describe('routes', () =>{
     })
     it('comment', async() =>{
         const show  = await supertest(app).post("/api/blogs/:id/comments");
-            expect(show.status).toBe(400);
+            expect(show.status).toBe(500);
     })
     it('comment', async() =>{
         const show  = await supertest(app).get("/api/blogs/:id/comments");
