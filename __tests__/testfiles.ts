@@ -11,7 +11,7 @@ dotenv.config();
 const DB_URL = process.env.MONGODB_URL|| '';
 
 beforeAll(async() =>{
-    await mongoose.connect("mongodb+srv://rwemaremy21:REMYZO!21@cluster0.9hxmwf5.mongodb.net/");
+    await mongoose.connect("mongodb+srv://rwemaremy21:REMYZO!21@cluster0.9hxmwf5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
 },10000);
 
 afterAll(async() =>{
