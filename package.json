@@ -99,7 +99,7 @@
     "whatwg-url": "^13.0.0"
   },
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest --coverage --detectOpenHandles",
     "test:watch": "jest --watchAll --coverage --detectOpenHandles --verbose",
     "start": "tsc && nodemon dist/index.js",
     "build": "tsc"
