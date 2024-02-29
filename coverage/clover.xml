@@ -1,34 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1709147781550" clover="3.2.0">
-  <project timestamp="1709147781551" name="All files">
-    <metrics statements="264" coveredstatements="192" conditionals="33" coveredconditionals="11" methods="38" coveredmethods="33" elements="335" coveredelements="236" complexity="0" loc="264" ncloc="264" packages="7" files="17" classes="17"/>
+<coverage generated="1709232577753" clover="3.2.0">
+  <project timestamp="1709232577758" name="All files">
+    <metrics statements="291" coveredstatements="183" conditionals="42" coveredconditionals="6" methods="44" coveredmethods="29" elements="377" coveredelements="218" complexity="0" loc="291" ncloc="291" packages="8" files="18" classes="18"/>
     <package name="src">
-      <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="index.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\index.ts">
-        <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\index.ts">
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
-        <line num="33" count="1" type="stmt"/>
-        <line num="34" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.accesories">
       <metrics statements="16" coveredstatements="11" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="cloudinary.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\accesories\cloudinary.ts">
+      <file name="cloudinary.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\accesories\cloudinary.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -36,7 +31,7 @@
         <line num="4" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
       </file>
-      <file name="multer.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\accesories\multer.ts">
+      <file name="multer.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\accesories\multer.ts">
         <metrics statements="11" coveredstatements="6" conditionals="4" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -53,7 +48,7 @@
     </package>
     <package name="src.config">
       <metrics statements="10" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
-      <file name="DB.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\config\DB.ts">
+      <file name="DB.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\config\DB.ts">
         <metrics statements="10" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -62,45 +57,45 @@
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.controller">
-      <metrics statements="170" coveredstatements="104" conditionals="29" coveredconditionals="11" methods="34" coveredmethods="30"/>
-      <file name="Querries.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\controller\Querries.ts">
-        <metrics statements="27" coveredstatements="16" conditionals="3" coveredconditionals="1" methods="6" coveredmethods="6"/>
+      <metrics statements="170" coveredstatements="86" conditionals="29" coveredconditionals="3" methods="34" coveredmethods="24"/>
+      <file name="Querries.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\controller\Querries.ts">
+        <metrics statements="27" coveredstatements="21" conditionals="3" coveredconditionals="1" methods="6" coveredmethods="6"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
         <line num="28" count="2" type="stmt"/>
         <line num="29" count="2" type="stmt"/>
         <line num="30" count="2" type="stmt"/>
-        <line num="31" count="2" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
-        <line num="56" count="1" type="stmt"/>
-        <line num="57" count="1" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
         <line num="59" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="60" count="0" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
-        <line num="66" count="1" type="stmt"/>
+        <line num="66" count="2" type="stmt"/>
       </file>
-      <file name="commentController.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\controller\commentController.ts">
-        <metrics statements="40" coveredstatements="28" conditionals="3" coveredconditionals="1" methods="10" coveredmethods="8"/>
+      <file name="commentController.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\controller\commentController.ts">
+        <metrics statements="40" coveredstatements="24" conditionals="3" coveredconditionals="1" methods="10" coveredmethods="8"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
@@ -108,18 +103,18 @@
         <line num="11" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
-        <line num="15" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="16" count="0" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
         <line num="48" count="1" type="stmt"/>
         <line num="49" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
@@ -142,17 +137,17 @@
         <line num="76" count="0" type="stmt"/>
         <line num="78" count="0" type="stmt"/>
       </file>
-      <file name="controllers.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\controller\controllers.ts">
-        <metrics statements="59" coveredstatements="34" conditionals="6" coveredconditionals="2" methods="14" coveredmethods="12"/>
+      <file name="controllers.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\controller\controllers.ts">
+        <metrics statements="59" coveredstatements="21" conditionals="6" coveredconditionals="0" methods="14" coveredmethods="6"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="15" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="15" count="0" type="stmt"/>
         <line num="17" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="18" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
@@ -162,8 +157,8 @@
         <line num="29" count="2" type="stmt"/>
         <line num="30" count="2" type="stmt"/>
         <line num="31" count="2" type="stmt"/>
-        <line num="32" count="2" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
         <line num="39" count="1" type="stmt"/>
         <line num="40" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
@@ -172,19 +167,19 @@
         <line num="45" count="0" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
         <line num="62" count="1" type="stmt"/>
-        <line num="63" count="1" type="stmt"/>
-        <line num="64" count="1" type="stmt"/>
-        <line num="65" count="1" type="stmt"/>
-        <line num="66" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="67" count="1" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="67" count="0" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
         <line num="70" count="0" type="stmt"/>
         <line num="72" count="0" type="stmt"/>
         <line num="76" count="1" type="stmt"/>
-        <line num="77" count="1" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
         <line num="79" count="0" type="stmt"/>
-        <line num="81" count="1" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
         <line num="85" count="1" type="stmt"/>
         <line num="86" count="1" type="stmt"/>
         <line num="87" count="1" type="stmt"/>
@@ -204,8 +199,8 @@
         <line num="108" count="0" type="stmt"/>
         <line num="110" count="0" type="stmt"/>
       </file>
-      <file name="user.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\controller\user.ts">
-        <metrics statements="44" coveredstatements="26" conditionals="17" coveredconditionals="7" methods="4" coveredmethods="4"/>
+      <file name="user.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\controller\user.ts">
+        <metrics statements="44" coveredstatements="20" conditionals="17" coveredconditionals="1" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -233,49 +228,86 @@
         <line num="33" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="48" count="2" type="stmt"/>
-        <line num="49" count="2" type="stmt"/>
-        <line num="51" count="2" type="stmt"/>
-        <line num="52" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="48" count="3" type="stmt"/>
+        <line num="49" count="3" type="stmt"/>
+        <line num="51" count="3" type="stmt"/>
+        <line num="52" count="3" type="cond" truecount="0" falsecount="1"/>
         <line num="53" count="0" type="stmt"/>
-        <line num="58" count="2" type="stmt"/>
-        <line num="59" count="2" type="stmt"/>
-        <line num="60" count="2" type="cond" truecount="1" falsecount="1"/>
-        <line num="61" count="2" type="stmt"/>
-        <line num="65" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="58" count="3" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="60" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="65" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="66" count="0" type="stmt"/>
-        <line num="72" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="73" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="74" count="2" type="stmt"/>
-        <line num="78" count="2" type="stmt"/>
+        <line num="72" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="73" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
         <line num="84" count="0" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
+        <line num="91" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.middlewear">
+      <metrics statements="31" coveredstatements="13" conditionals="9" coveredconditionals="3" methods="6" coveredmethods="2"/>
+      <file name="authenticatepass.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\middlewear\authenticatepass.ts">
+        <metrics statements="31" coveredstatements="13" conditionals="9" coveredconditionals="3" methods="6" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="30" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="50" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="54" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.models">
       <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="Querries.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\models\Querries.ts">
+      <file name="Querries.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\models\Querries.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="2" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
       </file>
-      <file name="comment.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\models\comment.ts">
+      <file name="comment.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\models\comment.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="2" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
       </file>
-      <file name="post.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\models\post.ts">
+      <file name="post.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\models\post.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
       </file>
-      <file name="user.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\models\user.ts">
+      <file name="user.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\models\user.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
@@ -283,15 +315,16 @@
       </file>
     </package>
     <package name="src.routes">
-      <metrics statements="26" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="routes.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\routes\routes.ts">
-        <metrics statements="26" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="27" coveredstatements="27" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="routes.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\routes\routes.ts">
+        <metrics statements="27" coveredstatements="27" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
@@ -316,22 +349,22 @@
     </package>
     <package name="src.validations">
       <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="Querriesvalidation.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\validations\Querriesvalidation.ts">
+      <file name="Querriesvalidation.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\validations\Querriesvalidation.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
       </file>
-      <file name="commentsvalidation.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\validations\commentsvalidation.ts">
+      <file name="commentsvalidation.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\validations\commentsvalidation.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
       </file>
-      <file name="postvalidation.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\validations\postvalidation.ts">
+      <file name="postvalidation.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\validations\postvalidation.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
       </file>
-      <file name="userval.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\validations\userval.ts">
+      <file name="userval.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\validations\userval.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
