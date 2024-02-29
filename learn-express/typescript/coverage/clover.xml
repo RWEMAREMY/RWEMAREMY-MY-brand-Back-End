@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1709125568736" clover="3.2.0">
-  <project timestamp="1709125568737" name="All files">
-    <metrics statements="259" coveredstatements="187" conditionals="33" coveredconditionals="11" methods="38" coveredmethods="33" elements="330" coveredelements="231" complexity="0" loc="259" ncloc="259" packages="7" files="17" classes="17"/>
+<coverage generated="1709147781550" clover="3.2.0">
+  <project timestamp="1709147781551" name="All files">
+    <metrics statements="264" coveredstatements="192" conditionals="33" coveredconditionals="11" methods="38" coveredmethods="33" elements="335" coveredelements="236" complexity="0" loc="264" ncloc="264" packages="7" files="17" classes="17"/>
     <package name="src">
-      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="index.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End-1\learn-express\typescript\src\index.ts">
-        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
         <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.accesories">

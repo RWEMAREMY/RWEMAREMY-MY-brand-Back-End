@@ -12,11 +12,7 @@ const commentSchema = new mongoose_1.Schema({
     name: String,
     email: String,
     content: String,
-<<<<<<< HEAD
-    blog: String,
-=======
     blog: mongoose_1.Types.ObjectId,
->>>>>>> 03f34f19d7f7839299ec935a253b06a6590ddcc1
     date: { type: Date, default: Date.now }
 });
 const Comment = (0, mongoose_1.model)('Comment', commentSchema);

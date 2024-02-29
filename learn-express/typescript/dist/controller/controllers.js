@@ -40,11 +40,7 @@ exports.createBlog = createBlog;
 const getBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const blog = yield post_1.default.find();
-<<<<<<< HEAD
-        res.send(blog);
-=======
         res.status(200).json(blog);
->>>>>>> 03f34f19d7f7839299ec935a253b06a6590ddcc1
     }
     catch (err) {
         res.status(400).json({ message: err.message });
@@ -82,11 +78,7 @@ const updateBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             return res.status(400).json({ error: error.details[0].message });
         }
         const blog = yield post_1.default.findByIdAndUpdate(req.params.id, { title, content }, { new: true });
-<<<<<<< HEAD
-        res.json(blog);
-=======
         res.status(200).json(blog);
->>>>>>> 03f34f19d7f7839299ec935a253b06a6590ddcc1
     }
     catch (err) {
         res.status(400).json({ message: err.message });
