@@ -28,13 +28,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const routes_1 = __importDefault(require("./routes/routes"));
-const dotenv_1 = __importDefault(require("dotenv"));
-const DB_1 = __importDefault(require("./config/DB"));
 const swaggerDocument = __importStar(require("./swagger.json"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const cors_1 = __importDefault(require("cors"));
-dotenv_1.default.config();
-const port = process.env.PORT;
 // mongoose
 //   .connect("mongodb://localhost:27017/acmedb", { useNewUrlParser: true })
 //   .then(() => {
@@ -48,10 +44,6 @@ const port = process.env.PORT;
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use("/api", routes_1.default);
-(0, DB_1.default)();
-app.listen(port, () => {
-    console.log("Server has started!");
-});
 app.use('/docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocument));
 app.use((0, cors_1.default)());
 exports.default = app;
