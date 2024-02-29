@@ -117,7 +117,7 @@ expect(show.statusCode).toBe(200)
     })
 
     it('get blog by id', async() =>{
-        const show  = await supertest(app).get("/api/blogs/65d48af2180f82e73b6aa5c1").send({
+        const show  = await supertest(app).get("/api/blogs/65e0dbaf746b0571c53d042b").send({
             title:"reymon",
             content:"he was  asong writer back in 90's & 80's"  
         })
@@ -125,7 +125,7 @@ expect(show.statusCode).toBe(200)
     })
 
     it('blog patched with no content', async() =>{
-        const show  = await supertest(app).patch("/api/blogs/65d48af2180f82e73b6aa5c1")
+        const show  = await supertest(app).patch("/api/blogs/65e0dbaf746b0571c53d042b")
                     expect(show.status).toBe(400);
     })
    
@@ -194,7 +194,7 @@ expect(res.status).toBe(404)
 // should be created
 it('should be created',async ()=>{
     const id= "65dd9f7d6c9d4e6708a23b3b"
-const res=await supertest(app).post('/api/blogs/65d48af2180f82e73b6aa5c1/comments')
+const res=await supertest(app).post('/api/blogs/65e0dbaf746b0571c53d042b/comments')
 .send({
     name:"james",
     email:"james24@gmail.com",
