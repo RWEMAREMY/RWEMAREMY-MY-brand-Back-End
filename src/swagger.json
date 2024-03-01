@@ -136,6 +136,11 @@
             },
             "post":{
                 "tags": ["Blogs"],
+                "security": [
+                    {
+                      "BearerAuth": []
+                    }
+                  ],
                 "summary": "Create new blog",
                 "consumes": [
                     "multipart/form-data"],
@@ -216,6 +221,11 @@
             
             "patch":{
                 "tags":["Blogs"],
+                "security": [
+                    {
+                      "BearerAuth": []
+                    }
+                  ],
                 "parameters": [
                     {
                         "in": "body",
@@ -247,7 +257,11 @@
                 "delete":{
                   
                     "tags":["Blogs"],
-                
+                    "security": [
+                        {
+                          "BearerAuth": []
+                        }
+                      ],
                     "summary":"Delete a single blog by given Id",
                     "responses":{
                         "204":{
