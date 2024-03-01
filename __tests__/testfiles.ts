@@ -12,7 +12,7 @@ const DB_URL = process.env.MONGODB_URL|| '';
 
 beforeAll(async() =>{
     await mongoose.connect(DB_URL);
-},10000);
+},80000);
 
 afterAll(async() =>{
     await mongoose.connection.close();

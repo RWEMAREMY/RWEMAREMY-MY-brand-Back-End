@@ -23,10 +23,7 @@ import cors from "cors";
 const app = express();
 app.use(express.json());
 app.use("/api", routes);
-
-
-
-
-app.use('/remy', swaggerUI.serve,swaggerUI.setup(swaggerDocument))
 app.use(cors());
+app.use('/remy', swaggerUI.serve,swaggerUI.setup(swaggerDocument))
+
 export default app;
