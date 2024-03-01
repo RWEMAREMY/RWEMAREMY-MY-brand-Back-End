@@ -48,11 +48,11 @@
         "signup":{
             "type":"object",
             "properties":{
-                "username":{"type":"string"},
+                "userName":{"type":"string"},
                 "email":{"type":"string"},
                 "password":{"type":"string"}
             },
-            "required":["username","email","password"]
+            "required":["userName","email","password"]
         },
         "login":{
             "type":"object",
@@ -117,7 +117,7 @@
 
             "/api/login": {
                 "post":{
-                    "tags":["loguser"],
+                    "tags":["login"],
                     "summary":"Login as a user",
 
                     "requestBody":{
@@ -125,7 +125,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/loguser"
+                                    "$ref": "#/components/schemas/login"
                                 }
                             }
                         }
@@ -137,7 +137,7 @@
                             "content": {
                                 "application/json": {
                                     "schema": {
-                                        "$ref": "#/components/schemas/loguser"
+                                        "$ref": "#/components/schemas/login"
                                     }
                                 }
                             }
