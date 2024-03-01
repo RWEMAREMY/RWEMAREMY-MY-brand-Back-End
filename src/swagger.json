@@ -19,6 +19,7 @@
         "license":{
             "name": "",
             "url": "http://localhost:9000"
+            
         }
      },
      "schemes": [
@@ -32,7 +33,7 @@
           "description": "development server"
         },
         {
-          "url": "http://localhost:5000",
+          "url": "https://rwemaremy-my-brand-back-end.onrender.com",
           "description": "production server"
         }
       ],
