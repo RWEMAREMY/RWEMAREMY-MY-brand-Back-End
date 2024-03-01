@@ -45,7 +45,7 @@
                 "idea":{"type":"string"}
             }
         },
-        "endUser":{
+        "signup":{
             "type":"object",
             "properties":{
                 "username":{"type":"string"},
@@ -54,7 +54,7 @@
             },
             "required":["username","email","password"]
         },
-        "/api/loguser":{
+        "login":{
             "type":"object",
             "properties":{
                 "email":{"type":"string"},
