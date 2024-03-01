@@ -84,14 +84,14 @@
 
             "/api/signup": {
                 "post":{
-                    "tags":["endUser"],
+                    "tags":["signup"],
                     "summary":"where to sign up as user by default",
                     "requestBody":{
                         "required":true,
                         "content": {
                             "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/endUser"
+                                "$ref": "#/components/schemas/signup"
                             }
                             }
                         }
@@ -102,7 +102,7 @@
                             "content": {
                                 "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/endUser"
+                                    "$ref": "#/components/schemas/signup"
                                 }
                                 }
                             }
@@ -324,7 +324,7 @@
                     }
             },
             
-            "/api/blogs/{id}/comments":{
+            "/api/blogs/:id/comments":{
                 "post":{
                     "tags":["Comments"],
                     "summary":"Posting a comment on a blog by using blog Id",
