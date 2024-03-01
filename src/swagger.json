@@ -22,10 +22,7 @@
             
         }
      },
-     "schemes": [
-        "http",
-        "https"
-     ],
+   
 
      "servers": [
         {
