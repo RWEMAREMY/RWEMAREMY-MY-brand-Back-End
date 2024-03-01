@@ -27,6 +27,6 @@ app.use("/api", routes);
 
 
 
-app.use('/docs', swaggerUI.serve,swaggerUI.setup(swaggerDocument))
+app.use('/remy', swaggerUI.serve,swaggerUI.setup(swaggerDocument))
 app.use(cors());
 export default app;

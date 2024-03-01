@@ -101,7 +101,7 @@
   "scripts": {
     "test": "jest --coverage --detectOpenHandles",
     "test:watch": "jest --watchAll --coverage --detectOpenHandles --verbose",
-    "start": "tsc && nodemon dist/index.js",
+    "start": "tsc && nodemon dist/app.js",
     "build": "tsc"
   },
   "author": "",
