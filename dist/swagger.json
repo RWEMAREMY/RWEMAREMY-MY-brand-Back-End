@@ -36,7 +36,7 @@
                 "properties": {
                     "name": { "type": "string" },
                     "email": { "type": "string" },
-                    "idea": { "type": "string" }
+                    "content": { "type": "string" }
                 }
             },
             "signup": {
@@ -59,7 +59,7 @@
             "queries": {
                 "type": "object",
                 "properties": {
-                    "name": { "type": "string" },
+                    "author": { "type": "string" },
                     "email": { "type": "string" },
                     "message": { "type": "string" }
                 }
@@ -297,7 +297,7 @@
                 }
             }
         },
-        "/api/blogs/:id/comments": {
+        "/api/blogs/{id}/comments": {
             "post": {
                 "tags": ["Comments"],
                 "summary": "Posting a comment on a blog by using blog Id",
@@ -365,7 +365,7 @@
                 "500": { "description": "Internal Server Error" }
             }
         },
-        "/api/query": {
+        "/api/queries": {
             "get": {
                 "tags": ["queries"],
                 "summary": "Get queries",

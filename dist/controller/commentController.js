@@ -32,6 +32,12 @@ const createComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             content: req.body.content,
             blog: blog._id,
         });
+        const { error } = commentsvalidation_1.commentval.validate({ name: req.body.name,
+            email: req.body.email,
+            content: req.body.content, });
+        if (error) {
+            return res.status(400).json({ error: error.details[0].message });
+        }
         yield newComment.save();
         res.status(201).json(newComment);
     }
@@ -46,9 +52,6 @@ const getComments = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         // const commentid=req.params.id;
         const blog = yield comment_1.default.find();
         res.status(200).json(blog);
-        // const comment = new Comment({blog:blogId, content:req.body.content,
-        //   email:req.body.email,name:req.body.name ,date:req.body.date });
-        // await comment.save();
     }
     catch (err) {
         res.status(500).json({ message: err.message });

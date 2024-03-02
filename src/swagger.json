@@ -394,7 +394,7 @@
                     }
             },
 
-            "/api/query":{
+            "/api/queries":{
                 "get":{
                     "tags":["queries"],
                     "summary":"Get queries",

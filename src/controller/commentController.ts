@@ -11,16 +11,24 @@ export const createComment = async (req: Request, res: Response) => {
   try {
     // const { name, email, idea } = req.body;
     const blogId = req.params.id;
+    
     const blog = await post.findOne({ _id: blogId });
     if (!blog) {
       return res.status(404).send({ error: "Not Found" });
     }
+    
     const newComment = new Comment({
       name: req.body.name, 
       email: req.body.email, 
       content: req.body.content, 
       blog: blog._id,
     });
+    const { error } = commentval.validate({ name: req.body.name, 
+      email: req.body.email, 
+      content: req.body.content,});
+    if (error) {
+      return res.status(400).json({ error: error.details[0].message });
+    }
     await newComment.save();
     res.status(201).json(newComment);
   } catch (error) {
@@ -35,11 +43,7 @@ export const getComments = async (req: Request, res: Response) => {
      
       res.status(200).json(blog);
 
-  // const comment = new Comment({blog:blogId, content:req.body.content,
-  //   email:req.body.email,name:req.body.name ,date:req.body.date });
-
-  // await comment.save();
-
+ 
   } catch (err) {
       res.status(500).json({ message: (err as Error).message });
   }
