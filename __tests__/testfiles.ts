@@ -30,7 +30,7 @@ describe('routes', () =>{
         expect(show.status).toBe(200);
     })
     it('/api/ for 200', async()=>{
-        const show  = await supertest(app).get('/api/query');
+        const show  = await supertest(app).get('/api/queries');
         expect(show.status).toBe(200);
     })
     it('/api/ for 404', async()=>{
@@ -69,35 +69,35 @@ expect(show.statusCode).toBe(200)
             expect(show.status).toBe(500);
     })
     it('querry', async() =>{
-        const show  = await supertest(app).post("/api/query").send({
+        const show  = await supertest(app).post("/api/queries").send({
             title:"",
             content:"",
         })
             expect(show.status).toBe(400);
     })
     it('querry', async() =>{
-        const show  = await supertest(app).post("/api/query").send({
+        const show  = await supertest(app).post("/api/queries").send({
             author:"remy",
-            content:"i had a query",
+            content:"i had a queries",
             email:"rwe@gmail.com"
         })
             expect(show.status).toBe(200);
     })
     it('querry', async() =>{
-        const show  = await supertest(app).get("/api/query");
+        const show  = await supertest(app).get("/api/queries");
             expect(show.status).toBe(200);
     })
     it('querry by id', async() =>{
-        const show  = await supertest(app).get("/api/query/65d1edeba3794c2b6215d9aa");
+        const show  = await supertest(app).get("/api/queries/65d1edeba3794c2b6215d9aa");
             expect(show.status).toBe(200);
     })
     it('querry with unexisting id', async() =>{
-        const show  = await supertest(app).get("/api/query/65d1edeba3794c2b6215d9aa!!!!!!!!");
+        const show  = await supertest(app).get("/api/queries/65d1edeba3794c2b6215d9aa!!!!!!!!");
             expect(show.status).toBe(400);
     })
     
     it('querry', async() =>{
-        const show  = await supertest(app).patch("/api/query/:id");
+        const show  = await supertest(app).patch("/api/queries/:id");
             expect(show.status).toBe(404);
     })
     it('blogs', async() =>{
