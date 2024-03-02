@@ -324,7 +324,7 @@
                     }
             },
             
-            "/api/blogs/:id/comments":{
+            "/api/blogs/{id}/comments":{
                 "post":{
                     "tags":["Comments"],
                     "summary":"Posting a comment on a blog by using blog Id",
