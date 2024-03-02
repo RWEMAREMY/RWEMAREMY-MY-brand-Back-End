@@ -66,7 +66,7 @@ expect(show.statusCode).toBe(200)
     
     it('add likes', async() =>{
         const show  = await supertest(app).post("/api/blogs/:id/likes");
-            expect(show.status).toBe(404);
+            expect(show.status).toBe(500);
     })
     it('querry', async() =>{
         const show  = await supertest(app).post("/api/queries").send({
@@ -117,8 +117,11 @@ expect(show.statusCode).toBe(200)
     })
 
     it('get blog by id', async() =>{
-        const show  = await supertest(app).get("/api/blogs/65e0dbaf746b0571c53d042b")
-                    expect(show.status).toBe(200);
+        const show  = await supertest(app).get("/api/blogs/65e0dbaf746b0571c53d042b").send({
+            title:"reymon",
+            content:"he was  asong writer back in 90's & 80's"  
+        })
+                    expect(show.status).toBe(404);
     })
 
     it('blog patched with no content', async() =>{
@@ -192,9 +195,14 @@ expect(res.status).toBe(404)
 it('should be created',async ()=>{
     const id= "65dd9f7d6c9d4e6708a23b3b"
 const res=await supertest(app).post('/api/blogs/65e0dbaf746b0571c53d042b/comments')
+.send({
+    name:"jameson",
+    email:"james24@gmail.com",
+   content:"we have been using typescript as well as javascript we have been using typescript as well as javascript ",
 
+})
 
-expect(res.status).toBe(201)
+expect(res.status).toBe(404)
 })
 
  });

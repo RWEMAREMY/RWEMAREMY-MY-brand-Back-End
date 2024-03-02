@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1709306256770" clover="3.2.0">
-  <project timestamp="1709306256770" name="All files">
-    <metrics statements="279" coveredstatements="202" conditionals="42" coveredconditionals="15" methods="41" coveredmethods="32" elements="362" coveredelements="249" complexity="0" loc="279" ncloc="279" packages="7" files="17" classes="17"/>
+<coverage generated="1709408881039" clover="3.2.0">
+  <project timestamp="1709408881040" name="All files">
+    <metrics statements="279" coveredstatements="200" conditionals="42" coveredconditionals="17" methods="41" coveredmethods="32" elements="362" coveredelements="249" complexity="0" loc="279" ncloc="279" packages="7" files="17" classes="17"/>
     <package name="src">
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\index.ts">
@@ -45,7 +45,7 @@
       </file>
     </package>
     <package name="src.controller">
-      <metrics statements="170" coveredstatements="104" conditionals="29" coveredconditionals="11" methods="34" coveredmethods="26"/>
+      <metrics statements="170" coveredstatements="102" conditionals="29" coveredconditionals="13" methods="34" coveredmethods="26"/>
       <file name="Querries.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\controller\Querries.ts">
         <metrics statements="27" coveredstatements="23" conditionals="3" coveredconditionals="2" methods="6" coveredmethods="6"/>
         <line num="2" count="1" type="stmt"/>
@@ -77,7 +77,7 @@
         <line num="66" count="1" type="stmt"/>
       </file>
       <file name="commentController.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\controller\commentController.ts">
-        <metrics statements="40" coveredstatements="28" conditionals="3" coveredconditionals="1" methods="10" coveredmethods="8"/>
+        <metrics statements="40" coveredstatements="26" conditionals="3" coveredconditionals="2" methods="10" coveredmethods="8"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
@@ -85,11 +85,11 @@
         <line num="11" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
-        <line num="15" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
@@ -120,7 +120,7 @@
         <line num="78" count="0" type="stmt"/>
       </file>
       <file name="controllers.ts" path="C:\Users\REMY\Desktop\ANDELA\RWEMAREMY-MY-brand-Back-End 2\src\controller\controllers.ts">
-        <metrics statements="59" coveredstatements="27" conditionals="6" coveredconditionals="1" methods="14" coveredmethods="8"/>
+        <metrics statements="59" coveredstatements="27" conditionals="6" coveredconditionals="2" methods="14" coveredmethods="8"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
@@ -144,9 +144,9 @@
         <line num="39" count="1" type="stmt"/>
         <line num="40" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
-        <line num="42" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="45" count="1" type="stmt"/>
+        <line num="42" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
         <line num="47" count="0" type="stmt"/>
         <line num="62" count="1" type="stmt"/>
         <line num="63" count="1" type="stmt"/>
