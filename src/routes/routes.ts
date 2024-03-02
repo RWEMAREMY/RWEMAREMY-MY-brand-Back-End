@@ -24,12 +24,12 @@ router.route('/blogs/:id/comments/:id').patch(Commentupdate);
 router.get('/blogs/like/', controllers.getlikeBlog);
 /////////////////Querries section///////////////
 
-router.post('/query', query.createQuerry);
-router.get('/query',query.getallQuerry);
-router.get('/query/:id', query.getSingleQuerry);
+router.post('/queries', query.createQuerry);
+router.get('/queries',query.getallQuerry);
+router.get('/queries/:id', query.getSingleQuerry);
 ///////////////////likes//////////////////////////////
 
-router.post('/blogs/:id/like', controllers.likeBlog);
+router.post('/blogs/:id/likes', controllers.likeBlog);
 router.get('/blogslikes/:id', controllers.getlikeBlog);
 ////////////////////////////////////////////////////
 
