@@ -65,7 +65,7 @@ expect(show.statusCode).toBe(200)
 
     
     it('add likes', async() =>{
-        const show  = await supertest(app).post("/api/blogs/:id/like");
+        const show  = await supertest(app).post("/api/blogs/:id/likes");
             expect(show.status).toBe(500);
     })
     it('querry', async() =>{
