@@ -44,6 +44,6 @@ const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use("/api", routes_1.default);
-app.use('/remy', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocument));
 app.use((0, cors_1.default)());
+app.use('/remy', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swaggerDocument));
 exports.default = app;

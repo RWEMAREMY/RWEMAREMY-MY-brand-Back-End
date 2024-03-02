@@ -42,7 +42,7 @@
             "properties":{
                 "name":{"type":"string"},
                 "email":{"type":"string"},
-                "idea":{"type":"string"}
+                "content":{"type":"string"}
             }
         },
         "signup":{
