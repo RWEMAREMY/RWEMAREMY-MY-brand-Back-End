@@ -67,7 +67,7 @@
             "properties":{
                 "author":{"type":"string"},
                 "email":{"type":"string"},
-                "message":{"type":"string"}
+                "content":{"type":"string"}
             }
         },
         "Likes":{
@@ -448,35 +448,6 @@
             },
 
             "/api/blogs/{id}/likes":{
-                "get":{
-                    "tags":["likes"],
-                    "summary":"Get the likes of a blog",
-                    "parameters": [
-                        {
-                            "name": "id",
-                            "in": "path",
-                            "description": "blog id",
-                            "schema": {
-                                "type": "string"
-                            }
-                        }
-                    ],
-                    "responses":{
-                        "200":{
-                            "description":"likes of the blog",
-                            "content":{
-                                "application/json":{
-                                    "schema":{
-                                        "$ref":"#/components/schemas/Likes"
-                                    }
-                                }
-                            }
-                        },
-                        "500":{"description":"Internal Server Error"},
-                        "404":{"description":"Blog not found"}
-                    }
-                    
-                },
                 "put":{
                     "tags":["likes"],
                     "summary":"Like a post",
