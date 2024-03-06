@@ -32,9 +32,11 @@ const createComment = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             content: req.body.content,
             blog: blog._id,
         });
-        const { error } = commentsvalidation_1.commentval.validate({ name: req.body.name,
+        const { error } = commentsvalidation_1.commentval.validate({
+            name: req.body.name,
             email: req.body.email,
-            content: req.body.content, });
+            content: req.body.content,
+        });
         if (error) {
             return res.status(400).json({ error: error.details[0].message });
         }
@@ -62,7 +64,9 @@ const getBlogComment = (req, res) => __awaiter(void 0, void 0, void 0, function*
     try {
         const blog = yield comment_1.default.findById(req.params.id);
         if (!blog) {
-            return res.status(404).json({ message: 'Not found, may be deleted / never created' });
+            return res
+                .status(404)
+                .json({ message: "Not found, may be deleted / never created" });
         }
         res.status(200).send(blog);
     }

@@ -175,7 +175,8 @@
                 "tags": ["Blogs"],
                 "summary": "Getting all Blogs here!",
                 "responses": {
-                    "200": { "description": "OK",
+                    "200": {
+                        "description": "OK",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -415,15 +416,40 @@
                 }
             }
         },
-        "/api/blogs/{id}/likes": {
-            "put": {
+        "/api/blogslikes/{id}": {
+            "get": {
                 "tags": ["likes"],
-                "summary": "Like a post",
-                "security": [
+                "summary": "Get the likes of a blog",
+                "parameters": [
                     {
-                        "BearerAuth": []
+                        "name": "id",
+                        "in": "path",
+                        "description": "blog id",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
+                "responses": {
+                    "200": {
+                        "description": "likes of the blog",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Likes"
+                                }
+                            }
+                        }
+                    },
+                    "500": { "description": "Internal Server Error" },
+                    "404": { "description": "Blog not found" }
+                }
+            }
+        },
+        "/api/blogs/{id}/likes": {
+            "post": {
+                "tags": ["likes"],
+                "summary": "Like a post",
                 "parameters": [
                     {
                         "name": "id",

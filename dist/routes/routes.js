@@ -34,25 +34,25 @@ const multer_1 = __importDefault(require("../accesories/multer"));
 const theUser = __importStar(require("../controller/user"));
 const authenticatepass_1 = require("../middlewear/authenticatepass");
 const router = express_1.default.Router();
-router.post('/blogs', authenticatepass_1.isAuthenticated, authenticatepass_1.isAdmin, multer_1.default.single("image"), controllers.createBlog); // isAuthenticated, isAdmin,
-router.get('/blogs', controllers.getBlog);
-router.get('/blogs/:id', controllers.getBlogById);
-router.patch('/blogs/:id', authenticatepass_1.isAuthenticated, authenticatepass_1.isAdmin, controllers.updateBlog); // isAuthenticated, isAdmin,
-router.delete('/blogs/:id', authenticatepass_1.isAuthenticated, authenticatepass_1.isAdmin, controllers.deleteBlog); // isAuthenticated, isAdmin,
+router.post("/blogs", authenticatepass_1.isAuthenticated, authenticatepass_1.isAdmin, multer_1.default.single("image"), controllers.createBlog); // isAuthenticated, isAdmin,
+router.get("/blogs", controllers.getBlog);
+router.get("/blogs/:id", controllers.getBlogById);
+router.patch("/blogs/:id", authenticatepass_1.isAuthenticated, authenticatepass_1.isAdmin, controllers.updateBlog); // isAuthenticated, isAdmin,
+router.delete("/blogs/:id", authenticatepass_1.isAuthenticated, authenticatepass_1.isAdmin, controllers.deleteBlog); // isAuthenticated, isAdmin,
 //////Comment Section//////////////////////
-router.route('/blogs/:id/comments').post(commentController_1.createComment);
-router.route('/blogs/:id/comments').get(commentController_1.getComments);
-router.route('/blogs/:id/comments/:id').get(commentController_1.getBlogComment);
-router.route('/blogs/:id/comments/:id').delete(commentController_1.deleteComment);
-router.route('/blogs/:id/comments/:id').patch(commentController_1.Commentupdate);
-router.get('/blogs/like/', controllers.getlikeBlog);
+router.route("/blogs/:id/comments").post(commentController_1.createComment);
+router.route("/blogs/:id/comments").get(commentController_1.getComments);
+router.route("/blogs/:id/comments/:id").get(commentController_1.getBlogComment);
+router.route("/blogs/:id/comments/:id").delete(commentController_1.deleteComment);
+router.route("/blogs/:id/comments/:id").patch(commentController_1.Commentupdate);
+router.get("/blogs/like/", controllers.getlikeBlog);
 /////////////////Querries section///////////////
-router.post('/queries', query.createQuerry);
-router.get('/queries', query.getallQuerry);
-router.get('/queries/:id', query.getSingleQuerry);
+router.post("/queries", query.createQuerry);
+router.get("/queries", query.getallQuerry);
+router.get("/queries/:id", query.getSingleQuerry);
 ///////////////////likes//////////////////////////////
-router.post('/blogs/:id/likes', controllers.likeBlog);
-router.get('/blogslikes/:id', controllers.getlikeBlog);
+router.post("/blogs/:id/likes", controllers.likeBlog);
+router.get("/blogslikes/:id", controllers.getlikeBlog);
 ////////////////////////////////////////////////////
 router.post("/signup", theUser.createUser);
 router.post("/login", theUser.loginUser);

@@ -26,8 +26,12 @@ const createQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* (
         if (!thisquerries) {
             return res.status(400).json({ message: "required" });
         }
-        const realquerry = new Querries_1.default({ author: req.body.author, content: req.body.content,
-            email: req.body.email, date: req.body.date });
+        const realquerry = new Querries_1.default({
+            author: req.body.author,
+            content: req.body.content,
+            email: req.body.email,
+            date: req.body.date,
+        });
         yield realquerry.save();
         res.status(200).json(realquerry);
     }
@@ -39,7 +43,7 @@ exports.createQuerry = createQuerry;
 const getallQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const theques = yield Querries_1.default.find();
-        res.status(200).send(theques);
+        res.status(200).json(theques);
     }
     catch (err) {
         res.status(400).json({ message: err.message });
