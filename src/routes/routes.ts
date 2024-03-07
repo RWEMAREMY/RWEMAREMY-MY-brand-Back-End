@@ -15,14 +15,14 @@ const router = express.Router();
 
 router.post(
   "/blogs",
- 
+  isAuthenticated,
   save.single("image"),
   controllers.createBlog
 ); // isAuthenticated, isAdmin,
 router.get("/blogs", controllers.getBlog);
 router.get("/blogs/:id", controllers.getBlogById);
 router.patch("/blogs/:id", isAuthenticated, isAdmin, controllers.updateBlog); // isAuthenticated, isAdmin,
-router.delete("/blogs/:id", isAuthenticated, isAdmin, controllers.deleteBlog); // isAuthenticated, isAdmin,
+router.delete("/blogs/:id",  controllers.deleteBlog); // isAuthenticated, isAdmin,
 
 //////Comment Section//////////////////////
 

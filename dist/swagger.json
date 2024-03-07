@@ -233,11 +233,6 @@
             "delete": {
                 "tags": ["Blogs"],
                 "summary": "Deleting a blog from the database",
-                "security": [
-                    {
-                        "BearerAuth": []
-                    }
-                ],
                 "parameters": [
                     {
                         "name": "id",

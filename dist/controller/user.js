@@ -84,6 +84,7 @@ const loginUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 res.status(200).header("Authorization", `Bearer ${token}`).send({
                     message: "Log-in successfully!!",
                     token: token,
+                    status: true
                 });
             }
         }
