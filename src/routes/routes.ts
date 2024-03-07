@@ -33,7 +33,6 @@ router.route("/blogs/:id/comments/:id").delete(deleteComment);
 router.route("/blogs/:id/comments/:id").patch(Commentupdate);
 router.get("/blogs/like/", controllers.getlikeBlog);
 /////////////////Querries section///////////////
-
 router.post("/queries", query.createQuerry);
 router.get("/queries", query.getallQuerry);
 router.get("/queries/:id", query.getSingleQuerry);
