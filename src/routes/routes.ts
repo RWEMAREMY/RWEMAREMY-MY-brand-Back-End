@@ -25,7 +25,6 @@ router.patch("/blogs/:id", isAuthenticated, isAdmin, controllers.updateBlog); //
 router.delete("/blogs/:id",  controllers.deleteBlog); // isAuthenticated, isAdmin,
 
 //////Comment Section//////////////////////
-
 router.route("/blogs/:id/comments").post(createComment);
 router.route("/blogs/:id/comments").get(getComments);
 router.route("/blogs/:id/comments/:id").get(getBlogComment);
