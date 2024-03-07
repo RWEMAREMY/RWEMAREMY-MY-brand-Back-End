@@ -15,7 +15,7 @@ const router = express.Router();
 
 router.post(
   "/blogs",
-  isAuthenticated,
+
   save.single("image"),
   controllers.createBlog
 ); // isAuthenticated, isAdmin,
