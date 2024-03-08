@@ -129,19 +129,13 @@
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -153,9 +147,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -187,58 +184,53 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Request ,Response }  from 'express';
-import Querry from '../models/Querries';
-import {Error} from 'mongoose';
-import {Queryval} from '../validations/Querriesvalidation';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Request, Response } from "express";
+import Querry from "../models/Querries";
+import { Error } from "mongoose";
+import { Queryval } from "../validations/Querriesvalidation";
 &nbsp;
-export const createQuerry =async(req:Request,res:Response)=&gt;{
-    try{
-&nbsp;
-        const {author,email,content}=req.body;
-        const { error } = Queryval.validate({ author,email,content });
-        if (error) {
-          return res.status(400).json({ error: error.details[0].message });
-        }
-        const thisquerries=await req.body;
-        <span class="missing-if-branch" title="if path not taken" >I</span>if(!thisquerries){
-<span class="cstat-no" title="statement not covered" >            return res.status(400).json({message:"required"});</span>
-        }
-        const realquerry = new Querry({author:req.body.author,content:req.body.content,
-            email:req.body.email,date:req.body.date})
-           await realquerry.save()
-           res.status(200).json(realquerry)
+export const createQuerry = async (req: Request, res: Response) =&gt; {
+  try {
+    const { author, email, content } = req.body;
+    const { error } = Queryval.validate({ author, email, content });
+    if (error) {
+      return res.status(400).json({ error: error.details[0].message });
     }
-    catch(err){
-<span class="cstat-no" title="statement not covered" >        res.status(400).json({ message: (err as Error).message });</span>
+    const thisquerries = await req.body;
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!thisquerries) {
+<span class="cstat-no" title="statement not covered" >      return res.status(400).json({ message: "required" });</span>
     }
+    const realquerry = new Querry({
+      author: req.body.author,
+      content: req.body.content,
+      email: req.body.email,
+      date: req.body.date,
+    });
+    await realquerry.save();
+    res.status(200).json(realquerry);
+  } catch (err) {
+<span class="cstat-no" title="statement not covered" >    res.status(400).json({ message: (err as Error).message });</span>
+  }
 };
 &nbsp;
 export const getallQuerry = async (req: Request, res: Response) =&gt; {
-    try {
-        const theques = await Querry.find();
-        res.status(200).send(theques);
-    } catch (err:any) {
-<span class="cstat-no" title="statement not covered" >        res.status(400).json({ message: err.message });</span>
-    }
+  try {
+    const theques = await Querry.find();
+    res.status(200).json(theques);
+  } catch (err: any) {
+<span class="cstat-no" title="statement not covered" >    res.status(400).json({ message: err.message });</span>
+  }
 };
 &nbsp;
 // export const getallQuerry = async (req: Request, res: Response) =&gt; {
@@ -248,7 +240,7 @@ export const getallQuerry = async (req: Request, res: Response) =&gt; {
 //         if(!allquerry){
 //             return res.json({message:"Querry not Found"});
 //         }
-        
+&nbsp;
 //         res.send(allquerry);
 //         const thisquerry = new Querry({content:req.body.content,
 //             email:req.body.email,author:req.body.author  });
@@ -258,24 +250,17 @@ export const getallQuerry = async (req: Request, res: Response) =&gt; {
 //     }
 //   };
 &nbsp;
-&nbsp;
-&nbsp;
-export const getSingleQuerry= async(req:Request,res:Response)=&gt;{
-    try{
-        const thisquerries= await Querry.findById(req.params.id);
-        if(!thisquerries){
-            return res.json({message:"Querry not Found"});
-&nbsp;
-        }
-<span class="cstat-no" title="statement not covered" >        res.status(200).json(thisquerries)</span>
+export const getSingleQuerry = async (req: Request, res: Response) =&gt; {
+  try {
+    const thisquerries = await Querry.findById(req.params.id);
+    if (!thisquerries) {
+      return res.json({ message: "Querry not Found" });
     }
-    catch(err){
-        res.status(400).json({ message: (err as Error).message });
-    }
+<span class="cstat-no" title="statement not covered" >    res.status(200).json(thisquerries);</span>
+  } catch (err) {
+    res.status(400).json({ message: (err as Error).message });
+  }
 };
-&nbsp;
-&nbsp;
-&nbsp;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -283,7 +268,7 @@ export const getSingleQuerry= async(req:Request,res:Response)=&gt;{
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-02T19:48:00.864Z
+                at 2024-03-08T12:27:49.719Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
