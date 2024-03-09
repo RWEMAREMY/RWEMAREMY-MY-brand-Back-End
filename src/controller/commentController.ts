@@ -41,7 +41,7 @@ export const getComments = async (req: Request, res: Response) => {
   try {
     const blogId = req.params.id;
     // const commentid=req.params.id;
-    const blog = await Comment.find(); //{blogId}
+    const blog = await Comment.find({blogId}); 
 
     res.status(200).json(blog);
   } catch (err) {
