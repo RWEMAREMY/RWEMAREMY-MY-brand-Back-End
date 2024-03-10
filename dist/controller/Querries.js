@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSingleQuerry = exports.getallQuerry = exports.createQuerry = void 0;
+exports.getSingleQuerry = exports.deleteQuerry = exports.getallQuerry = exports.createQuerry = void 0;
 const Querries_1 = __importDefault(require("../models/Querries"));
 const Querriesvalidation_1 = require("../validations/Querriesvalidation");
 const createQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -50,6 +50,16 @@ const getallQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.getallQuerry = getallQuerry;
+const deleteQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield Querries_1.default.findByIdAndDelete(req.params.id);
+        res.json({ message: 'blog deleted' });
+    }
+    catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+exports.deleteQuerry = deleteQuerry;
 // export const getallQuerry = async (req: Request, res: Response) => {
 //     try {
 //       // const commentid=req.params.id;

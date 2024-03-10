@@ -396,79 +396,85 @@
                         }
                     }
                 },
-                "responses": {
-                    "201": {
-                        "description": "Queries sent successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/queries"
-                                }
+                "delete": {
+                    "tags": ["Blogs"],
+                    "summary": "Deleting a query from the database",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "in": "path",
+                            "description": "blog id",
+                            "schema": {
+                                "type": "string"
                             }
                         }
-                    },
-                    "500": { "description": "Internal Server Error" }
-                }
-            }
-        },
-        "/api/blogslikes/{id}": {
-            "get": {
-                "tags": ["likes"],
-                "summary": "Get the likes of a blog",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "blog id",
-                        "schema": {
-                            "type": "string"
+                    ],
+                    "responses": {
+                        "200": { "description": "Blog deleted" },
+                        "404": { "description": "Blog not found" },
+                        "500": { "description": "Internal Server Error" }
+                    }
+                },
+                "/api/blogslikes/{id}": {
+                    "get": {
+                        "tags": ["likes"],
+                        "summary": "Get the likes of a blog",
+                        "parameters": [
+                            {
+                                "name": "id",
+                                "in": "path",
+                                "description": "blog id",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        ],
+                        "responses": {
+                            "200": {
+                                "description": "likes of the blog",
+                                "content": {
+                                    "application/json": {
+                                        "schema": {
+                                            "$ref": "#/components/schemas/Likes"
+                                        }
+                                    }
+                                }
+                            },
+                            "500": { "description": "Internal Server Error" },
+                            "404": { "description": "Blog not found" }
                         }
                     }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "likes of the blog",
-                        "content": {
-                            "application/json": {
+                },
+                "/api/blogs/{id}/likes": {
+                    "post": {
+                        "tags": ["likes"],
+                        "summary": "Like a post",
+                        "parameters": [
+                            {
+                                "name": "id",
+                                "in": "path",
+                                "description": "blog id",
                                 "schema": {
-                                    "$ref": "#/components/schemas/Likes"
+                                    "type": "string"
                                 }
                             }
-                        }
-                    },
-                    "500": { "description": "Internal Server Error" },
-                    "404": { "description": "Blog not found" }
-                }
-            }
-        },
-        "/api/blogs/{id}/likes": {
-            "post": {
-                "tags": ["likes"],
-                "summary": "Like a post",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "blog id",
-                        "schema": {
-                            "type": "string"
+                        ],
+                        "responses": {
+                            "200": {
+                                "description": "Blog liked successfully",
+                                "content": {
+                                    "application/json": {
+                                        "schema": {
+                                            "$ref": "#/components/schemas/Likes"
+                                        }
+                                    }
+                                }
+                            },
+                            "500": { "description": "Internal Server Error" },
+                            "404": { "description": "Blog not found" },
+                            "401": { "description": "Unauthorized to like" }
                         }
                     }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Blog liked successfully",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Likes"
-                                }
-                            }
-                        }
-                    },
-                    "500": { "description": "Internal Server Error" },
-                    "404": { "description": "Blog not found" },
-                    "401": { "description": "Unauthorized to like" }
                 }
             }
         }

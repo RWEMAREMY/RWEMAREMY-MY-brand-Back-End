@@ -416,30 +416,9 @@
             }
           }
         },
-        "delete": {
-          "tags": ["Blogs"],
-          "summary": "Deleting a query from the database",
-        
-  
-          "parameters": [
-            {
-              "name": "id",
-              "in": "path",
-              "description": "blog id",
-              "schema": {
-                "type": "string"
-              }
-            }
-          ],
-  
-          "responses": {
-            "200": { "description": "Blog deleted" },
-            "404": { "description": "Blog not found" },
-            "500": { "description": "Internal Server Error" }
-          }
-        },
-
-    "/api/blogslikes/{id}": {
+       
+    
+        "/api/blogslikes/{id}": {
       "get": {
         "tags": ["likes"],
         "summary": "Get the likes of a blog",
@@ -499,6 +478,31 @@
           "500": { "description": "Internal Server Error" },
           "404": { "description": "Blog not found" },
           "401": { "description": "Unauthorized to like" }
+        }
+      }
+    },
+    
+    "/api/queries/{id}": {
+          
+        
+      "delete": {
+        "tags": ["queries"],
+        "summary": "Delete a query",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of the query to delete",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Query deleted successfully" },
+          "404": { "description": "Query not found" },
+          "500": { "description": "Internal Server Error" }
         }
       }
     }
