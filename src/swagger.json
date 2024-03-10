@@ -416,6 +416,19 @@
             }
           }
         },
+      "delete": {
+        "tags": ["queries"],
+        "summary": "Create a new message",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/queries"
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Queries sent successfully",
@@ -496,4 +509,5 @@
       }
     }
   }
+}
 }

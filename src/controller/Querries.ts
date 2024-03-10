@@ -35,6 +35,14 @@ export const getallQuerry = async (req: Request, res: Response) => {
     res.status(400).json({ message: err.message });
   }
 };
+export const deleteQuerry = async (req: Request, res: Response) => {
+  try {
+      await Querry.findByIdAndDelete(req.params.id);
+      res.json({ message: 'blog deleted' });
+  } catch (err: any) {
+      res.status(500).json({ message: (err as Error).message });
+  }
+};
 
 // export const getallQuerry = async (req: Request, res: Response) => {
 //     try {

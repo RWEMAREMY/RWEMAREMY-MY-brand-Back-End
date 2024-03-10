@@ -52,7 +52,7 @@ const getComments = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     try {
         const blogId = req.params.id;
         // const commentid=req.params.id;
-        const blog = yield comment_1.default.find();
+        const blog = yield comment_1.default.find({ blog: blogId });
         res.status(200).json(blog);
     }
     catch (err) {

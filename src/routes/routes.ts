@@ -35,6 +35,7 @@ router.get("/blogs/like/", controllers.getlikeBlog);
 router.post("/queries", query.createQuerry);
 router.get("/queries", query.getallQuerry);
 router.get("/queries/:id", query.getSingleQuerry);
+router.delete("/queries/:id", query.deleteQuerry);
 ///////////////////likes//////////////////////////////
 
 router.post("/blogs/:id/likes", controllers.likeBlog);
