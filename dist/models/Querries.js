@@ -8,10 +8,11 @@ const mongoose_1 = require("mongoose");
 //     createdAt: Date;
 //   }
 const querryschema = new mongoose_1.Schema({
+    id: { type: String },
     author: String,
     email: String,
     content: String,
-    date: { type: Date, default: Date.now }
+    date: { type: Date, default: Date.now },
 });
-const Querry = (0, mongoose_1.model)('querry', querryschema);
+const Querry = (0, mongoose_1.model)("querry", querryschema);
 exports.default = Querry;
