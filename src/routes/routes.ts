@@ -28,6 +28,7 @@ router.delete("/blogs/:id", controllers.deleteBlog); // isAuthenticated, isAdmin
 router.route("/blogs/:id/comments").post(createComment);
 router.route("/blogs/:id/comments").get(getComments);
 router.route("/comments").get(getallComment);
+router.route("/comments/:id").delete(deleteComment);
 router.route("/blogs/:id/comments/:id").delete(deleteComment);
 router.route("/blogs/:id/comments/:id").patch(Commentupdate);
 router.get("/blogs/like/", controllers.getlikeBlog);
