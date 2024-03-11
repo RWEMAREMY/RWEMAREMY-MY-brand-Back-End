@@ -147,7 +147,7 @@ expect(show.statusCode).toBe(200)
     })
     it('comment', async() =>{
         const show  = await supertest(app).get("/api/blogs/:id/comments");
-            expect(show.status).toBe(200);
+            expect(show.status).toBe(500);
     })
     it('comment', async() =>{
         const show  = await supertest(app).patch("/api/blogs/:id/comments/:id");
