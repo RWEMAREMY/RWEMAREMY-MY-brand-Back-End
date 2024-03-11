@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Commentupdate = exports.deleteComment = exports.getBlogComment = exports.getComments = exports.createComment = void 0;
+exports.Commentupdate = exports.deleteComment = exports.getallComment = exports.getComments = exports.createComment = void 0;
 const comment_1 = __importDefault(require("../models/comment"));
 const post_1 = __importDefault(require("../models/post"));
 const commentsvalidation_1 = require("../validations/commentsvalidation");
@@ -60,21 +60,16 @@ const getComments = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.getComments = getComments;
-const getBlogComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getallComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const blog = yield comment_1.default.findById(req.params.id);
-        if (!blog) {
-            return res
-                .status(404)
-                .json({ message: "Not found, may be deleted / never created" });
-        }
-        res.status(200).send(blog);
+        const blog = yield comment_1.default.find();
+        res.status(200).json(blog);
     }
     catch (err) {
-        res.status(400).json({ message: "Ooops not found ! Check Typo?" });
+        res.status(400).json({ message: err.message });
     }
 });
-exports.getBlogComment = getBlogComment;
+exports.getallComment = getallComment;
 const deleteComment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield comment_1.default.findByIdAndDelete(req.params.id);

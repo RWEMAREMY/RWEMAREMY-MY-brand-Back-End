@@ -41,27 +41,22 @@ export const getComments = async (req: Request, res: Response) => {
   try {
     const blogId = req.params.id;
     // const commentid=req.params.id;
-    const blog = await Comment.find({blog:blogId}); 
+    const blog = await Comment.find({ blog: blogId });
 
     res.status(200).json(blog);
   } catch (err) {
     res.status(500).json({ message: (err as Error).message });
   }
 };
-
-export const getBlogComment = async (req: Request, res: Response) => {
+export const getallComment = async (req: Request, res: Response) => {
   try {
-    const blog = await Comment.findById(req.params.id);
-    if (!blog) {
-      return res
-        .status(404)
-        .json({ message: "Not found, may be deleted / never created" });
-    }
-    res.status(200).send(blog);
+    const blog = await Comment.find();
+    res.status(200).json(blog);
   } catch (err: any) {
-    res.status(400).json({ message: "Ooops not found ! Check Typo?" });
+    res.status(400).json({ message: err.message });
   }
 };
+
 export const deleteComment = async (req: Request, res: Response) => {
   try {
     await Comment.findByIdAndDelete(req.params.id);

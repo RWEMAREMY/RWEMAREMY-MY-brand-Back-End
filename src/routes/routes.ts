@@ -3,7 +3,7 @@ import express from "express";
 import {
   createComment,
   getComments,
-  getBlogComment,
+  getallComment,
   deleteComment,
   Commentupdate,
 } from "../controller/commentController";
@@ -27,7 +27,7 @@ router.delete("/blogs/:id", controllers.deleteBlog); // isAuthenticated, isAdmin
 //////Comment Section//////////////////////
 router.route("/blogs/:id/comments").post(createComment);
 router.route("/blogs/:id/comments").get(getComments);
-router.route("/blogs/:id/comments/:id").get(getBlogComment);
+router.route("/comments").get(getallComment);
 router.route("/blogs/:id/comments/:id").delete(deleteComment);
 router.route("/blogs/:id/comments/:id").patch(Commentupdate);
 router.get("/blogs/like/", controllers.getlikeBlog);
