@@ -53,7 +53,7 @@ exports.getallQuerry = getallQuerry;
 const deleteQuerry = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield Querries_1.default.findByIdAndDelete(req.params.id);
-        res.json({ message: 'blog deleted' });
+        res.json({ message: 'query deleted' });
     }
     catch (err) {
         res.status(500).json({ message: err.message });

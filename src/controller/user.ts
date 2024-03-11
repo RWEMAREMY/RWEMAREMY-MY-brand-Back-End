@@ -31,7 +31,7 @@ export const createUser = async (req: Request, res: Response) => {
         const jwtSecret = (process.env.JWT_SECRET as string) || "secret";
         const tokenExpire = process.env.TOKEN_EXPIRES || "1h";
         const token = jwt.sign({ userId: created._id }, jwtSecret, {
-          expiresIn: tokenExpire,
+          expiresIn: tokenExpire, 
         });
 
         res.status(200).header("Authorization", `Bearer ${token}`).send({
